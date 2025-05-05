@@ -29,16 +29,16 @@
       <!-- Kanan: Form -->
       <div class="w-1/2">
         <div id="errorDiv" class="hidden flex flex-col mb-2 text-xs text-red-700 font-bold px-[5px] bg-[#a67c00]/80 rounded">
-          <a id="errorMessage"></a>
+          <span id="errorMessage"></span>
         </div>
-        <form method="post" action="/player/growid/login/validate" accept-charset="UTF-8" id="loginForm">
+        <form method="POST" action="/player/growid/login/validate" accept-charset="UTF-8" id="loginForm" novalidate>
           <input name="type" value="log" type="hidden" />
-          <input name="_token" value="<%= JSON.stringify(data) %>" type="hidden" />
+          <input name="_token" value="<%= data %>" type="hidden" />
 
           <div class="mb-3">
             <label for="loginGrowId" class="block text-white text-xs mb-1">GrowID</label>
             <div class="flex items-center border-2 border-[#ffd54f] rounded bg-[#a67c00]/70 px-2 py-2">
-              <i class="fas fa-user text-white mr-2 text-sm"></i>
+              <i class="fas fa-user text-white mr-2 text-sm" aria-label="User icon"></i>
               <input type="text" name="growId" id="loginGrowId" class="w-full bg-transparent text-white text-xs placeholder-white focus:outline-none" placeholder="Enter your GrowID">
             </div>
           </div>
@@ -46,30 +46,25 @@
           <div class="mb-3">
             <label for="loginPassword" class="block text-white text-xs mb-1">Password</label>
             <div class="flex items-center border-2 border-[#ffd54f] rounded bg-[#a67c00]/70 px-2 py-2">
-              <i class="fas fa-lock text-white mr-2 text-sm"></i>
+              <i class="fas fa-lock text-white mr-2 text-sm" aria-label="Password icon"></i>
               <input type="password" name="password" id="loginPassword" class="w-full bg-transparent text-white text-xs placeholder-white focus:outline-none" placeholder="Enter your Password">
-              <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-xs">
+              <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-xs" aria-label="Toggle password visibility">
                 <i class="fas fa-eye"></i>
               </button>
             </div>
           </div>
 
           <div class="flex justify-end mt-4 space-x-2">
-            <!-- Tombol Login -->
-            <button id="loginButton" class="px-5 py-2 rounded bg-gradient-to-r from-red-400 to-red-600 text-white text-xs hover:from-red-500 hover:to-red-700 transition duration-300 ease-in-out transform hover:scale-105 font-bold shadow-md">
+            <button id="loginButton" type="submit" class="px-5 py-2 rounded bg-gradient-to-r from-red-400 to-red-600 text-white text-xs hover:from-red-500 hover:to-red-700 transition duration-300 ease-in-out transform hover:scale-105 font-bold shadow-md">
               Start Farming
             </button>
-            
-            <!-- Tombol Guest -->
-            <div class="button">
-              <button id="guestButton" type="button" class="px-5 py-2 rounded bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xs hover:from-blue-500 hover:to-blue-700 transition duration-300 ease-in-out transform hover:scale-105 font-bold shadow-md" onclick="guest(this)">
-                Guest
-              </button>
-            </div>
+
+            <button id="guestButton" type="button" class="px-5 py-2 rounded bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xs hover:from-blue-500 hover:to-blue-700 transition duration-300 ease-in-out transform hover:scale-105 font-bold shadow-md">
+              Guest
+            </button>
           </div>
         </form>
       </div>
-
     </div>
   </div>
 
@@ -91,12 +86,8 @@
     }
 
     @keyframes bounceSlow {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-8px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
     .animate-bounce-slow {
       animation: bounceSlow 3s infinite;
@@ -104,52 +95,46 @@
   </style>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (localStorage.getItem('growId')) {
-        document.getElementById('loginGrowId').value = localStorage.getItem('growId');
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedGrowId = localStorage.getItem('growId');
+      if (savedGrowId) {
+        document.getElementById('loginGrowId').value = savedGrowId;
       }
+
+      document.getElementById('loginButton')?.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        const growId = document.getElementById('loginGrowId')?.value.trim();
+        const password = document.getElementById('loginPassword')?.value.trim();
+
+        const errorDiv = document.getElementById('errorDiv');
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (!growId || !password) {
+          errorDiv.classList.remove('hidden');
+          errorMessage.textContent = 'Username or Password is empty';
+        } else if (growId.length < 3 || password.length < 3) {
+          errorDiv.classList.remove('hidden');
+          errorMessage.textContent = 'Username or Password must be at least 3 characters long';
+        } else {
+          localStorage.setItem('growId', growId);
+          document.getElementById('loginForm')?.submit();
+        }
+      });
+
+      document.getElementById('toggleLogPassword')?.addEventListener('click', function () {
+        const passField = document.getElementById('loginPassword');
+        const type = passField?.getAttribute('type') === 'password' ? 'text' : 'password';
+        passField.setAttribute('type', type);
+        this.innerHTML = `<i class="fas fa-eye${type === 'text' ? '-slash' : ''}"></i>`;
+      });
+
+      document.getElementById('guestButton')?.addEventListener('click', function () {
+        document.getElementById('loginGrowId').value = 'guest';
+        document.getElementById('loginPassword').value = 'play';
+        document.getElementById('loginForm')?.submit();
+      });
     });
-
-    document.getElementById('loginButton').addEventListener('click', function (event) {
-      event.preventDefault();
-
-      const loginForm = document.getElementById('loginForm');
-      const uName = document.getElementById('loginGrowId').value;
-      const uPass = document.getElementById('loginPassword').value;
-
-      if (!uName || !uPass) {
-        document.getElementById('errorDiv').classList.remove('hidden');
-        document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
-        return;
-      } else if (uName.length < 3 || uPass.length < 3) {
-        document.getElementById('errorDiv').classList.remove('hidden');
-        document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 3 characters long';
-        return;
-      } else {
-        loginForm.submit();
-        localStorage.setItem('growId', document.getElementById('loginGrowId').value);
-      }
-    });
-
-    document.getElementById('toggleLogPassword').addEventListener('click', function () {
-      const LpasswordField = document.getElementById('loginPassword');
-      const LpasswordFieldType = LpasswordField.getAttribute('type');
-      if (LpasswordFieldType === 'password') {
-        LpasswordField.setAttribute('type', 'text');
-        this.innerHTML = '<i class="fas fa-eye-slash"></i>';
-      } else {
-        LpasswordField.setAttribute('type', 'password');
-        this.innerHTML = '<i class="fas fa-eye"></i>';
-      }
-    });
-
-    // Fungsi untuk tombol Guest
-    function guest(button) {
-      // Set nilai default untuk Guest login (misalnya "guest" sebagai GrowID dan password kosong)
-      document.getElementById('loginGrowId').value = 'guest';
-      document.getElementById('loginPassword').value = 'play'; // Password kosong untuk guest
-      document.getElementById('loginForm').submit(); // Kirim form
-    }
   </script>
 </body>
 </html>
