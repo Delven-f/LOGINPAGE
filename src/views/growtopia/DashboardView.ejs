@@ -11,18 +11,18 @@
   .rainbow-border {
     border-width: 15px !important;
     border-style: solid;
-    border-image: linear-gradient(90deg, blue, yellow, yellow, blue, blue, indigo, blue) 1;
-    animation: rainbow 5s linear infinite;
+    border-image: linear-gradient(90deg, blue, blue, blue, blue, blue, blue, blue) 1;
+    animation: rainbow 2s linear infinite;
   }
   @keyframes rainbow {
-    0% { border-image: linear-gradient(90deg, blue, yellow, yellow, blue, blue, indigo, blue) 1; }
-    100% { border-image: linear-gradient(450deg, blue, yellow, yellow, blue, blue, indigo, blue) 1; }
+    0% { border-image: linear-gradient(90deg, blue, blue, blue, blue, blue, blue, blue) 1; }
+    100% { border-image: linear-gradient(450deg, blue, blue, blue, blue, blue, blue, blue) 1; }
   }
 </style>
 </head>
 <body class="flex flex-col items-center justify-center h-screen bg-[transparant]">
     <div class="fixed inset-0 flex items-center justify-center">
-        <div class="relative bg-[#2b4d6d] shadow-lg p-6 w-80 rounded-lg rainbow-border">
+        <div class="relative bg-[#2b4d6d] border-15 border-[rgb(135,184,204)] shadow-lg p-6 w-80 rounded-lg">
             <p class="text-white text-center font-bold text-2xl">Login</p>
             <div id="errorDiv" class="hidden flex flex-col mt-2 text-xs text-red-700 font-bold px-[5px] bg-transparent rounded">
                 <a id="errorMessage"></a>
