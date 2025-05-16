@@ -59,8 +59,9 @@
               Start Farming
             </button>
 
-            <button id="guestButton" type="button" class="px-5 py-2 rounded bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xs hover:from-blue-500 hover:to-blue-700 transition duration-300 ease-in-out transform hover:scale-105 font-bold shadow-md">
-              Guest
+            
+  <button id="registerButton" type="button" class="px-5 py-2 rounded bg-gradient-to-r from-green-400 to-green-600 text-white text-xs hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out shadow">
+    Register Player
             </button>
           </div>
         </form>
@@ -129,11 +130,9 @@
         this.innerHTML = `<i class="fas fa-eye${type === 'text' ? '-slash' : ''}"></i>`;
       });
 
-      document.getElementById('guestButton')?.addEventListener('click', function () {
-        document.getElementById('loginGrowId').value = 'guest';
-        document.getElementById('loginPassword').value = 'play';
-        document.getElementById('loginForm')?.submit();
-      });
+     document.getElementById('registerButton')?.addEventListener('click', function () {
+  window.location.href = '/player/growid/register';
+});
     });
   </script>
 </body>
