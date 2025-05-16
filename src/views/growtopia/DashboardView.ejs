@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTPS SERVER - DELVINE X</title>
+  <title>GTPS SERVER</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
@@ -22,8 +22,8 @@
       position: relative;
       background: rgba(20,22,34,0.97);
       border-radius: 1.3rem;
-      width: 33rem;     /* Lebar persegi panjang */
-      height: 22rem;    /* Tinggi proporsional */
+      width: 33rem;
+      height: 22rem;
       max-width: 97vw;
       margin: 2rem;
       overflow: hidden;
@@ -179,7 +179,7 @@
       border: none;
       font-size: 1.13rem;
       font-weight: bold;
-      padding: 0.75rem 2.5rem;
+      padding: 0.9rem 4.5rem;
       margin-right: 0.5rem;
       margin-top: 0.2rem;
       box-shadow: 0 2px 14px 0 #00eaff47;
@@ -187,6 +187,7 @@
       cursor: pointer;
       letter-spacing: 0.01em;
       outline: none;
+      min-width: 10rem;
     }
     .btn-main:hover, .btn-alt:hover {
       background: linear-gradient(90deg, #8f00ff 45%, #00eaff 100%);
@@ -229,19 +230,6 @@
       color: #8f00ff;
       font-size: 1.2em;
       margin-right: 0.16em;
-    }
-    .delvinx-credit {
-      width: 100%;
-      margin: 0 auto 2px auto;
-      text-align: center;
-      font-size: 3.5px;
-      font-weight: bold;
-      color: #00eaff;
-      letter-spacing: 2px;
-      font-family: 'Montserrat', Arial, sans-serif;
-      opacity: 0.92;
-      z-index: 999;
-      text-shadow: 0 1px 6px #00eaff,0 0px 1px #8f00ff;
     }
     @media (max-width: 800px) {
       .dashboard-wrap { width: 99vw !important; height: auto; }
@@ -307,7 +295,6 @@
       </div>
     </div>
   </div>
-  <div class="delvinx-credit">DelvinX</div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (localStorage.getItem('growId')) {
