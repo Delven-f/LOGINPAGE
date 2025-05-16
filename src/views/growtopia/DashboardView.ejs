@@ -3,130 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTPS SERVER</title>
+  <title>GTPS SERVER - DELVINE X</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
     body {
       min-height: 100vh;
+      margin: 0;
       background: transparent
       font-family: 'Montserrat', Arial, sans-serif;
-      margin: 0;
-      color: #3b2d06;
+      color: #e0e3fb;
       display: flex;
       align-items: center;
       justify-content: center;
+      letter-spacing: 0.01em;
     }
     .dashboard-wrap {
       position: relative;
-      background: #fffdf8;
-      border-radius: 1.2rem;
+      background: rgba(20,22,34,0.97);
+      border-radius: 1.3rem;
       max-width: 95vw;
       margin: 2rem;
-      width: 24rem;
-      box-shadow: 0 6px 24px 0 #e0c6493a;
+      width: 26rem;
       overflow: hidden;
-      padding: 0;
-      /* Animated border using pseudo-element */
+      box-shadow: 0 0 32px 0 #00eaff44, 0 0 2px #fff;
     }
     .dashboard-wrap::before {
       content: '';
+      pointer-events: none;
       position: absolute;
       z-index: 1;
       inset: 0;
-      border-radius: 1.2rem;
+      border-radius: 1.3rem;
       padding: 3px;
-      background: linear-gradient(270deg, #f7c948, #222, #f7c948, #222, #f7c948);
-      background-size: 400% 400%;
-      animation: borderMove 4s linear infinite;
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
+      background: linear-gradient(120deg, #00eaff, #8f00ff, #2cb5e8, #202a45, #00eaff 90%);
+      background-size: 300% 300%;
+      animation: neonBorder 7s linear infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
-      pointer-events: none;
     }
-    @keyframes borderMove {
+    @keyframes neonBorder {
       0% {background-position: 0% 50%;}
       100% {background-position: 100% 50%;}
     }
-    .bee-illustration {
+    .tech-illustration {
       z-index: 2;
       position: relative;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #fffbe6;
-      padding-top: 2.5rem;
-      padding-bottom: 1rem;
+      background: linear-gradient(90deg, #141a24 40%, #202a45 100%);
+      padding-top: 2.2rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid #232944;
     }
-    .bee-emoji {
-      font-size: 3.3rem;
-      margin: 0 .6rem;
-      /* No animation */
+    .tech-icons {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 2.4rem;
     }
+    .tech-icons i {
+      color: #00eaff;
+      filter: drop-shadow(0 0 8px #00eaff);
+      transition: color 0.3s, filter 0.3s;
+    }
+    .tech-icons i:nth-child(2) { color: #8f00ff; filter: drop-shadow(0 0 8px #8f00ff);}
+    .tech-icons i:nth-child(3) { color: #2cb5e8; filter: drop-shadow(0 0 8px #2cb5e8);}
     .glass-content {
       z-index: 2;
       position: relative;
-      background: #fffdf8;
-      border-radius: 1.2rem;
-      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      background: rgba(24,28,46,0.93);
+      border-radius: 1.1rem;
+      padding: 2.2rem 1.6rem 1.2rem 1.6rem;
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-shadow: 0 2px 18px 0 #00eaff13;
     }
     .header-title {
-      font-size: 1.6rem;
+      font-size: 1.68rem;
       font-weight: 800;
-      letter-spacing: 0.04em;
-      color: #3b2d06;
-      margin-bottom: 1.2rem;
+      letter-spacing: 0.06em;
+      color: #e0e3fb;
+      margin-bottom: 1.5rem;
       text-align: center;
       display: flex;
       align-items: center;
       gap: 0.7rem;
+      text-shadow: 0 1px 10px #00eaff59;
     }
     .input-label {
-      color: #d9a92d;
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
+      color: #2cb5e8;
+      font-size: 1.01rem;
+      margin-bottom: 0.25rem;
       display: block;
       font-weight: 600;
+      letter-spacing: 0.01em;
     }
     .input-box {
-      background: #fffbe6;
-      border: 1.5px solid #f7c948;
-      border-radius: 0.7rem;
-      color: #3b2d06;
+      background: rgba(34,42,71,0.75);
+      border: 1.5px solid #00eaff;
+      border-radius: 0.8rem;
+      color: #e0e3fb;
       font-size: 1rem;
       padding-left: 0.9rem;
       padding-right: 0.5rem;
-      min-height: 2.1rem;
+      min-height: 2.2rem;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
+      box-shadow: 0 1px 10px 0 #00eaff22;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+    .input-box:focus-within {
+      border: 1.5px solid #8f00ff;
+      box-shadow: 0 2px 12px 0 #8f00ff42;
     }
     .input-box input {
       background: transparent;
       border: none;
-      color: #3b2d06;
+      color: #e0e3fb;
       width: 100%;
-      font-size: 1rem;
+      font-size: 1.03rem;
       outline: none;
+      letter-spacing: 0.01em;
     }
     .input-box input::placeholder {
-      color: #c2a84c;
+      color: #38cfff99;
       opacity: 1;
       font-size: .97rem;
+      font-style: italic;
     }
     .form-icon {
-      color: #f7c948;
-      margin-right: 0.6rem;
-      font-size: 1.08rem;
+      color: #00eaff;
+      margin-right: 0.7rem;
+      font-size: 1.09rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .input-box:focus-within .form-icon {
+      color: #8f00ff;
+      transform: scale(1.13);
     }
     .toggle-password {
-      margin-left:0.6rem;
+      margin-left:0.7rem;
       background:transparent;
       border:none;
       cursor:pointer;
@@ -135,33 +158,36 @@
       align-items: center;
     }
     .toggle-password i {
-      color: #f7c948;
+      color: #38cfff;
       font-size: 1.08rem;
+      transition: color 0.2s;
     }
     .btn-main, .btn-alt {
-      background: #f7c948;
-      color: #3b2d06;
-      border-radius: 0.8rem;
+      background: linear-gradient(90deg, #00eaff 40%, #8f00ff 100%);
+      color: #fff;
+      border-radius: 1rem;
       border: none;
-      font-size: 1.08rem;
+      font-size: 1.12rem;
       font-weight: bold;
-      padding: 0.6rem 1.7rem;
+      padding: 0.68rem 2.1rem;
       margin-right: 0.5rem;
       margin-top: 0.2rem;
+      box-shadow: 0 2px 14px 0 #00eaff47;
+      transition: background 0.2s, color 0.2s, transform 0.12s;
       cursor: pointer;
       letter-spacing: 0.01em;
-      box-shadow: 0 2px 10px 0 #f7c94830;
-      transition: background 0.2s, color 0.2s;
+      outline: none;
     }
     .btn-main:hover, .btn-alt:hover {
-      background: #fffbe6;
-      color: #d9a92d;
-      border: 1px solid #f7c948;
+      background: linear-gradient(90deg, #8f00ff 45%, #00eaff 100%);
+      color: #38cfff;
+      transform: scale(1.025);
+      border: 1px solid #00eaff;
     }
     .error-message {
       display: none;
-      background: #fff2;
-      color: #d90429;
+      background: #341c4e99;
+      color: #ff287b;
       border-radius: 0.6rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
@@ -169,42 +195,64 @@
       margin-bottom: 1.1rem;
       font-weight: bold;
       letter-spacing: 0.01em;
+      box-shadow: 0 2px 10px 0 #8f00ff15;
     }
     .error-message.show {
       display: block;
     }
     .credit-bar {
-      margin-top: 2rem;
-      color: #b89b36;
-      font-size: 1rem;
+      margin-top: 2.2rem;
+      color: #38cfff;
+      font-size: 1.03rem;
       font-weight: 600;
-      opacity: 0.85;
+      opacity: 0.92;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
       user-select: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+      text-shadow: 0 1px 8px #00eaff33;
     }
-    .credit-bar .fa-leaf {
-      color: #f7c948;
-      font-size: 1.1em;
+    .credit-bar .fa-code {
+      color: #8f00ff;
+      font-size: 1.15em;
+      margin-right: 0.16em;
+    }
+    .delvinx-credit {
+      width: 100%;
+      margin: 0 auto 2px auto;
+      text-align: center;
+      font-size: 3px;
+      font-weight: bold;
+      color: #00eaff;
+      letter-spacing: 2px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      opacity: 0.92;
+      z-index: 999;
+      text-shadow: 0 1px 6px #00eaff,0 0px 1px #8f00ff;
     }
     @media (max-width: 600px) {
       .dashboard-wrap, .glass-content { width: 99vw !important; border-radius: 1rem !important; }
       .glass-content { padding: 1rem !important; }
       .btn-main, .btn-alt { font-size: 1rem !important; padding: 0.7rem 1.1rem !important; }
       .input-box { font-size: 0.97rem; min-height: 2rem; }
-      .header-title { font-size: 1.1rem;}
+      .header-title { font-size: 1.18rem;}
     }
   </style>
 </head>
 <body>
   <div class="dashboard-wrap">
-    <div class="bee-illustration">
-      <span class="bee-emoji">🐝</span>
+    <div class="tech-illustration">
+      <div class="tech-icons">
+        <i class="fas fa-microchip"></i>
+        <i class="fas fa-robot"></i>
+        <i class="fas fa-bolt"></i>
+      </div>
     </div>
     <div class="glass-content">
-      <p class="header-title"><span class="bee-emoji">🐝</span> GTPS BEE SERVER</p>
+      <p class="header-title"><i class="fas fa-microchip"></i> GTPS SERVER</p>
       <div id="errorDiv" class="error-message">
         <span id="errorMessage"></span>
       </div>
@@ -244,11 +292,12 @@
         </div>
       </form>
       <div class="credit-bar">
-        <i class="fas fa-leaf"></i> 
-        <span>Growtopia Private Server - Bee Theme!</span>
+        <i class="fas fa-code"></i> 
+        <span>Growtopia Private Server - Futuristic Tech!</span>
       </div>
     </div>
   </div>
+  <div class="delvinx-credit">DelvinX</div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (localStorage.getItem('growId')) {
