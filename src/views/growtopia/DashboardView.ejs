@@ -22,9 +22,9 @@
       position: relative;
       background: rgba(20,22,34,0.97);
       border-radius: 1.3rem;
-      width: 50rem;
-      height: 33rem;
-      max-width: 99vw;
+      width: 32rem;        /* Ukuran lebih proporsional */
+      height: 24rem;
+      max-width: 96vw;
       margin: 2rem;
       overflow: hidden;
       box-shadow: 0 0 32px 0 #00eaff44, 0 0 2px #fff;
@@ -68,7 +68,7 @@
     .tech-icons {
       display: flex;
       gap: 2rem;
-      font-size: 2.8rem;
+      font-size: 2.2rem;
     }
     .tech-icons i {
       color: #00eaff;
@@ -82,7 +82,7 @@
       position: relative;
       background: rgba(24,28,46,0.93);
       border-radius: 1.1rem;
-      padding: 2rem 2.5rem 1.3rem 2.5rem;
+      padding: 1.7rem 1.3rem 1rem 1.3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -93,11 +93,11 @@
       justify-content: flex-start;
     }
     .header-title {
-      font-size: 2.1rem;
+      font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: 0.06em;
       color: #e0e3fb;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.1rem;
       text-align: center;
       display: flex;
       align-items: center;
@@ -126,7 +126,7 @@
       align-items: center;
       box-shadow: 0 1px 10px 0 #00eaff22;
       transition: box-shadow 0.2s, border 0.2s;
-      width: 19rem;
+      width: 17rem;
       max-width: 90vw;
     }
     .input-box:focus-within {
@@ -177,17 +177,17 @@
       color: #fff;
       border-radius: 1rem;
       border: none;
-      font-size: 1.13rem;
+      font-size: 1.09rem;
       font-weight: bold;
-      padding: 0.9rem 4.5rem;
-      margin-right: 0.5rem;
-      margin-top: 0.2rem;
+      padding: 0.8rem 0;
+      margin: 0;
       box-shadow: 0 2px 14px 0 #00eaff47;
       transition: background 0.2s, color 0.2s, transform 0.12s;
       cursor: pointer;
       letter-spacing: 0.01em;
       outline: none;
-      min-width: 10rem;
+      width: 100%;
+      min-width: 7rem;
     }
     .btn-main:hover, .btn-alt:hover {
       background: linear-gradient(90deg, #8f00ff 45%, #00eaff 100%);
@@ -212,9 +212,9 @@
       display: block;
     }
     .credit-bar {
-      margin-top: 2rem;
+      margin-top: 1.1rem;
       color: #38cfff;
-      font-size: 1.09rem;
+      font-size: 1.03rem;
       font-weight: 600;
       opacity: 0.92;
       display: flex;
@@ -236,7 +236,8 @@
       .glass-content { padding: 1rem 0.5rem !important; }
       .input-box { width: 95vw !important; }
       .header-title { font-size: 1.1rem;}
-      .tech-icons { font-size: 1.9rem; gap: 0.9rem;}
+      .tech-icons { font-size: 1.6rem; gap: 0.7rem;}
+      .btn-main, .btn-alt { min-width: 5rem; font-size: 1rem; }
     }
   </style>
 </head>
@@ -259,7 +260,7 @@
         action="/player/growid/login/validate"
         accept-charset="UTF-8"
         id="loginForm" style="width:100%;">
-        <div style="margin-bottom:1.2rem; display: flex; flex-direction: column; align-items: center;">
+        <div style="margin-bottom:1.1rem; display: flex; flex-direction: column; align-items: center;">
           <label for="loginGrowId" class="input-label">GrowID</label>
           <div class="input-box">
             <i class="fas fa-user form-icon"></i>
@@ -267,7 +268,7 @@
               placeholder="Enter your growid">
           </div>
         </div>
-        <div style="margin-bottom:1.4rem; display: flex; flex-direction: column; align-items: center;">
+        <div style="margin-bottom:1.2rem; display: flex; flex-direction: column; align-items: center;">
           <label for="loginPassword" class="input-label">Password</label>
           <div class="input-box">
             <i class="fas fa-lock form-icon"></i>
@@ -278,11 +279,11 @@
             </button>
           </div>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-top:1.6rem;">
-          <a href="/register" style="width:100%; text-align:left;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1.1rem; margin-top:1.1rem;">
+          <a href="/register" style="width:48%; text-align:left;">
             <button type="button" class="btn-alt" style="width:100%;">Register</button>
           </a>
-          <button id="loginButton" type="submit" class="btn-main" style="width:100%;">
+          <button id="loginButton" type="submit" class="btn-main" style="width:48%;">
             Login
           </button>
         </div>
