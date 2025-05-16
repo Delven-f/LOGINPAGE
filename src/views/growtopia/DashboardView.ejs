@@ -23,11 +23,11 @@
       box-shadow: 0 10px 32px 0 rgba(31,38,135,0.19);
       overflow: visible;
     }
-    /* LED border effect */
+    /* Blue-White LED border effect */
     .led-border {
       pointer-events: none;
       position: absolute;
-      inset: -8px; /* Border thickness outward */
+      inset: -10px; /* Border thickness outward */
       z-index: 2;
       border-radius: 2.3rem;
       background: transparent;
@@ -40,11 +40,10 @@
       z-index: 3;
       background: conic-gradient(
         from var(--angle, 0deg),
-        #ff5555, #fff 10%, #2196f3 22%, #a855f7 36%, #ffe066 51%, #14ffec 65%, #ff5555 80%, #fff 90%, #2196f3 100%
+        #2196f3, #fff 15%, #2196f3 30%, #fff 45%, #2196f3 60%, #fff 75%, #2196f3 90%, #fff 100%
       );
-      filter: blur(3.5px) brightness(1.13) drop-shadow(0 0 7px #fff8);
-      animation: led-spin 3.2s linear infinite;
-      /* make border act as outline only, not cover content */
+      filter: blur(3.5px) brightness(1.18) drop-shadow(0 0 7px #fff5);
+      animation: led-spin 2.7s linear infinite;
       -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
         linear-gradient(#fff 0 0);
@@ -60,7 +59,7 @@
       position: relative;
       z-index: 10;
       border-radius: 2rem;
-      background: rgba(34,54,86,0.93);
+      background: rgba(34,54,86,0.94);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       padding: 2.7rem 2.2rem 1.2rem 2.2rem;
@@ -77,7 +76,7 @@
       color: #fff;
       text-align: center;
       margin-bottom: 2.2rem;
-      filter: drop-shadow(0 4px 16px rgba(49,209,255,0.12));
+      filter: drop-shadow(0 4px 16px rgba(49,209,255,0.14));
     }
     .input-label {
       color: #e0e6ed;
@@ -88,8 +87,8 @@
       display: block;
     }
     .input-box {
-      background: rgba(255,255,255,0.10) !important;
-      border: 1.7px solid #31d1ff88 !important;
+      background: rgba(255,255,255,0.12) !important;
+      border: 1.7px solid #2196f377 !important;
       border-radius: 0.9rem !important;
       color: #e0e6ed !important;
       font-size: 1.08rem;
@@ -99,14 +98,14 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       box-shadow: 0 1px 8px 0 rgba(49,209,255,0.05);
     }
-    .input-box:focus-within { border-color: #ffe066; box-shadow: 0 0 0 2px #ffe06666; }
+    .input-box:focus-within { border-color: #fff; box-shadow: 0 0 0 2px #2196f366; }
     .input-box input:focus { outline: none; }
     .input-box::placeholder, .input-box input::placeholder { 
       color: #b3cce7; opacity: 1; font-size: 0.97rem; letter-spacing: .01em;
     }
     .btn-main {
-      background: linear-gradient(90deg, #ff5555 0%, #2196f3 100%);
-      color: #fff;
+      background: linear-gradient(90deg, #2196f3 0%, #fff 100%);
+      color: #172043;
       font-weight: bold;
       border-radius: 1rem;
       box-shadow: 0 2px 16px #2196f355;
@@ -116,14 +115,15 @@
       font-size: 1.13rem;
     }
     .btn-main:hover, .btn-main:focus {
-      background: linear-gradient(90deg, #ffe066 0%, #a855f7 100%);
+      background: linear-gradient(90deg, #fff 0%, #2196f3 100%);
+      color: #172043;
       transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 4px 24px #ffe06666;
+      box-shadow: 0 4px 24px #2196f366;
       outline: none;
     }
     .btn-alt {
       background: linear-gradient(90deg, #fff 0%, #2196f3 100%);
-      color: #222;
+      color: #172043;
       font-weight: bold;
       border-radius: 1rem;
       box-shadow: 0 2px 16px #2196f322;
@@ -133,10 +133,10 @@
       font-size: 1.13rem;
     }
     .btn-alt:hover, .btn-alt:focus {
-      background: linear-gradient(90deg, #a855f7 0%, #ffe066 100%);
+      background: linear-gradient(90deg, #2196f3 0%, #fff 100%);
+      color: #172043;
       transform: translateY(-2px) scale(1.05);
       outline: none;
-      color: #222;
     }
     .form-icon {
       color: #2196f3;
@@ -144,10 +144,10 @@
       font-size: 1.14rem;
       transition: color 0.2s;
     }
-    .input-box:focus-within .form-icon { color: #ffe066; }
+    .input-box:focus-within .form-icon { color: #fff; }
     .error-message {
       background: #fff2;
-      color: #f87171;
+      color: #2196f3;
       border-radius: 0.6rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
@@ -155,6 +155,37 @@
       margin-bottom: 1.1rem;
       font-weight: bold;
       letter-spacing: 0.01em;
+    }
+    /* Credit bar */
+    .credit-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 2.1rem;
+      margin-bottom: 0.8rem;
+      color: #2196f3;
+      font-size: 1.05rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      opacity: 0.92;
+      text-shadow: 0 2px 8px #2196f399, 0 0 2px #fff2;
+      user-select: none;
+    }
+    .credit-bar .fa-crown {
+      color: #fff;
+      background: linear-gradient(135deg,#2196f3 50%, #fff 100%);
+      border-radius: 50%;
+      padding: 0.18em 0.23em;
+      font-size: 1.09em;
+      box-shadow: 0 0 5px #2196f399, 0 0 2px #fff;
+      margin-right: 0.18em;
+      animation: crown-flicker 1.25s infinite alternate;
+    }
+    @keyframes crown-flicker {
+      0% { filter: brightness(1.08);}
+      100% { filter: brightness(1.6);}
     }
     @media (max-width: 600px) {
       .dashboard-led-wrap,.glass-content { border-radius: 1.1rem !important; width: 99vw !important; }
@@ -211,6 +242,11 @@
             </a>
           </div>
         </form>
+        <!-- Credit Logo/Bar -->
+        <div class="credit-bar mt-7">
+          <i class="fas fa-crown"></i> 
+          <span>Growtopia Private Server</span>
+        </div>
       </div>
     </div>
   </div>
