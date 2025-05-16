@@ -1,139 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Growtopia - Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growtopia - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="flex items-center justify-center min-h-screen bg-transparent">
-
-  <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm">
-    <div class="relative flex bg-[#a67c00]/90 border-4 border-[#ffcc80] shadow-2xl p-8 w-[750px] rounded-xl backdrop-blur-md items-center justify-between animate-slideUp">
-      
-      <!-- Kiri: Tulisan -->
-      <div class="flex flex-col items-start justify-center w-1/2 pr-4">
-        <p class="text-white font-extrabold text-4xl mb-4 drop-shadow-lg leading-tight animate-bounce-slow">
-          Log into your<br><span class="text-[#ffd54f]">GTPS ID</span>
-        </p>
-        <p class="text-sm text-white opacity-90 mb-3">
-          Welcome back, growtopians farmer! 🌾<br>Let's grow your adventure again!
-        </p>
-        <div class="flex space-x-2 mt-2">
-          <span class="text-xs bg-[#ffcc80] text-[#a67c00] px-2 py-1 rounded-full font-bold shadow">🌻 Harvest Time!</span>
-          <span class="text-xs bg-[#ffd54f] text-[#5d4037] px-2 py-1 rounded-full font-bold shadow">🍃 New Season</span>
-        </div>
-      </div>
-
-      <!-- Kanan: Form -->
-      <div class="w-1/2">
-        <div id="errorDiv" class="hidden flex flex-col mb-2 text-xs text-red-700 font-bold px-[5px] bg-[#a67c00]/80 rounded">
-          <span id="errorMessage"></span>
-        </div>
-        <form method="POST" action="/player/growid/login/validate" accept-charset="UTF-8" id="loginForm" novalidate>
-          <input name="type" value="log" type="hidden" />
-          <input name="_token" value="<%= data %>" type="hidden" />
-
-          <div class="mb-3">
-            <label for="loginGrowId" class="block text-white text-xs mb-1">GrowID</label>
-            <div class="flex items-center border-2 border-[#ffd54f] rounded bg-[#a67c00]/70 px-2 py-2">
-              <i class="fas fa-user text-white mr-2 text-sm" aria-label="User icon"></i>
-              <input type="text" name="growId" id="loginGrowId" class="w-full bg-transparent text-white text-xs placeholder-white focus:outline-none" placeholder="Enter your GrowID">
+<body class="flex flex-col items-center justify-center h-screen bg-[transparant]">
+    <div class="fixed inset-0 flex items-center justify-center">
+        <div class="relative bg-[#2b4d6d] border-4 border-[rgb(135,184,204)] shadow-lg p-6 w-80 rounded-lg">
+            <p class="text-white text-center font-bold text-2xl">Login</p>
+            <div id="errorDiv" class="hidden flex flex-col mt-2 text-xs text-red-700 font-bold px-[5px] bg-transparent rounded">
+                <a id="errorMessage"></a>
             </div>
-          </div>
+            <form 
+            method="post"
+            action="/player/growid/login/validate"
+            accept-charset="UTF-8"
+            id="loginForm" class="mt-3 bg-transparent">
+                <div class="mb-1">
+                    <input name="type" value="log" type="hidden" />
+                    <input name="_token" value="<%= JSON.stringify(data) %>" type="hidden" />
+                    <label for="loginGrowId" class="block text-white text-xs">GrowID</label>
+                    <div class="flex items-center border-2 border-[rgb(129,212,250)] rounded bg-transparent px-1 py-1">
+                        <i class="fas fa-user text-white mr-1 text-xs"></i>
+                        <input type="text" name="growId" id="loginGrowId" 
+                               class="w-full bg-transparent text-white text-xs placeholder-white focus:outline-none" 
+                               placeholder="Enter your growid" style="background-color: transparent;">
+                    </div>
+                </div>
+                <div class="mb-1">
+                    <label for="loginPassword" class="block text-white text-xs">Password</label>
+                    <div class="flex items-center border-2 border-[rgb(129,212,250)] rounded bg-transparent px-1 py-1">
+                        <i class="fas fa-lock text-white mr-1 text-xs"></i>
+                        <input type="password" name="password" id="loginPassword" 
+                               class="w-full bg-transparent text-white text-xs placeholder-white focus:outline-none" 
+                               placeholder="Enter your password" style="background-color: transparent;">
+                        <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-xs">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-3">
+                    <!-- Tombol Login -->
+                    <button id="loginButton" 
+                            class="px-2 py-1 rounded bg-[#00b8ff] text-white text-xs hover:bg-[#06a4dd] transition duration-300 ease-in-out transform hover:scale-105">
+                        Login
+                    </button>
 
-          <div class="mb-3">
-            <label for="loginPassword" class="block text-white text-xs mb-1">Password</label>
-            <div class="flex items-center border-2 border-[#ffd54f] rounded bg-[#a67c00]/70 px-2 py-2">
-              <i class="fas fa-lock text-white mr-2 text-sm" aria-label="Password icon"></i>
-              <input type="password" name="password" id="loginPassword" class="w-full bg-transparent text-white text-xs placeholder-white focus:outline-none" placeholder="Enter your Password">
-              <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-xs" aria-label="Toggle password visibility">
-                <i class="fas fa-eye"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="flex justify-end mt-4 space-x-2">
-            <button id="loginButton" type="submit" class="px-5 py-2 rounded bg-gradient-to-r from-red-400 to-red-600 text-white text-xs hover:from-red-500 hover:to-red-700 transition duration-300 ease-in-out transform hover:scale-105 font-bold shadow-md">
-              Start Farming
-            </button>
-
-            
-  <button id="registerButton" type="button" class="px-5 py-2 rounded bg-gradient-to-r from-green-400 to-green-600 text-white text-xs hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out shadow">
-    Register Player
-            </button>
-          </div>
-        </form>
-      </div>
+                    <!-- Tombol Register -->
+                    <a href="/register">
+                        <button id="registerButton" 
+                                class="px-2 py-1 rounded bg-[#4caf50] text-white text-xs hover:bg-[#43a047] transition duration-300 ease-in-out transform hover:scale-105">
+                            Register
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Auto-fill GrowID from localStorage
+            if (localStorage.getItem('growId')) {
+                document.getElementById('loginGrowId').value = localStorage.getItem('growId');
+            }
 
-  <style>
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 1s ease-out forwards;
-    }
+            // Debugging log for auto-filled values
+            console.log('GrowID auto-filled:', document.getElementById('loginGrowId').value);
+        });
 
-    @keyframes slideUp {
-      0% { transform: translateY(30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-    .animate-slideUp {
-      animation: slideUp 1s ease-out forwards;
-    }
+        // Event listener for login button
+        document.getElementById('loginButton').addEventListener('click', function (event) {
+            event.preventDefault();
 
-    @keyframes bounceSlow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .animate-bounce-slow {
-      animation: bounceSlow 3s infinite;
-    }
-  </style>
+            const loginForm = document.getElementById('loginForm');
+            const uName = document.getElementById('loginGrowId').value;
+            const uPass = document.getElementById('loginPassword').value;
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedGrowId = localStorage.getItem('growId');
-      if (savedGrowId) {
-        document.getElementById('loginGrowId').value = savedGrowId;
-      }
+            // Debugging log for input values
+            console.log('GrowID:', uName, 'Password:', uPass);
 
-      document.getElementById('loginButton')?.addEventListener('click', function (event) {
-        event.preventDefault();
+            if (!uName || !uPass) {
+                document.getElementById('errorDiv').classList.remove('hidden');
+                document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
+                return;
+            } else if (uName.length < 4 || uPass.length < 4) {
+                document.getElementById('errorDiv').classList.remove('hidden');
+                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 4 characters long';
+                return;
+            } else {
+                loginForm.submit();
+                localStorage.setItem('growId', uName); // Save GrowID to localStorage
+            }
+        });
 
-        const growId = document.getElementById('loginGrowId')?.value.trim();
-        const password = document.getElementById('loginPassword')?.value.trim();
-
-        const errorDiv = document.getElementById('errorDiv');
-        const errorMessage = document.getElementById('errorMessage');
-
-        if (!growId || !password) {
-          errorDiv.classList.remove('hidden');
-          errorMessage.textContent = 'Username or Password is empty';
-        } else if (growId.length < 3 || password.length < 3) {
-          errorDiv.classList.remove('hidden');
-          errorMessage.textContent = 'Username or Password must be at least 3 characters long';
-        } else {
-          localStorage.setItem('growId', growId);
-          document.getElementById('loginForm')?.submit();
-        }
-      });
-
-      document.getElementById('toggleLogPassword')?.addEventListener('click', function () {
-        const passField = document.getElementById('loginPassword');
-        const type = passField?.getAttribute('type') === 'password' ? 'text' : 'password';
-        passField.setAttribute('type', type);
-        this.innerHTML = `<i class="fas fa-eye${type === 'text' ? '-slash' : ''}"></i>`;
-      });
-
-     document.getElementById('registerButton')?.addEventListener('click', function () {
-  window.location.href = '/player/growid/register';
-});
-    });
-  </script>
+        // Toggle visibility of the password field
+        document.getElementById('toggleLogPassword').addEventListener('click', function () {
+            const LpasswordField = document.getElementById('loginPassword');
+            const LpasswordFieldType = LpasswordField.getAttribute('type');
+            if (LpasswordFieldType === 'password') {
+                LpasswordField.setAttribute('type', 'text');
+                this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                LpasswordField.setAttribute('type', 'password');
+                this.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        });
+    </script>
 </body>
 </html>
