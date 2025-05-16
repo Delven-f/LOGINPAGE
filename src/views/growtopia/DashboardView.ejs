@@ -10,7 +10,7 @@
     body {
       min-height: 100vh;
       margin: 0;
-      background: transparent
+      background: transparent;
       font-family: 'Montserrat', Arial, sans-serif;
       color: #e0e3fb;
       display: flex;
@@ -22,11 +22,15 @@
       position: relative;
       background: rgba(20,22,34,0.97);
       border-radius: 1.3rem;
-      max-width: 95vw;
+      max-width: 100vw;
       margin: 2rem;
-      width: 26rem;
+      width: 10rem;     /* Ukuran dashboard jadi 10rem */
+      height: 10rem;    /* Tambahkan ini jika ingin tinggi juga 10rem */
       overflow: hidden;
       box-shadow: 0 0 32px 0 #00eaff44, 0 0 2px #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .dashboard-wrap::before {
       content: '';
