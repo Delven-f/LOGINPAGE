@@ -22,8 +22,8 @@
       position: relative;
       background: rgba(20,22,34,0.97);
       border-radius: 1.3rem;
-      width: 32rem;        /* Ukuran lebih proporsional */
-      height: 24rem;
+      width: 32rem;
+      height: 29rem;         /* Lebih panjang agar tombol terlihat */
       max-width: 96vw;
       margin: 2rem;
       overflow: hidden;
@@ -43,9 +43,7 @@
       background: linear-gradient(120deg, #00eaff, #8f00ff, #2cb5e8, #202a45, #00eaff 90%);
       background-size: 300% 300%;
       animation: neonBorder 7s linear infinite;
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
     }
@@ -239,6 +237,22 @@
       .tech-icons { font-size: 1.6rem; gap: 0.7rem;}
       .btn-main, .btn-alt { min-width: 5rem; font-size: 1rem; }
     }
+    @media (max-width: 480px) {
+      .dashboard-wrap { width: 99vw !important; min-width: unset; }
+      .glass-content { padding: 1rem 0.2rem !important; }
+      .input-box { width: 99vw !important; }
+      .header-title { font-size: 1rem;}
+      .tech-icons { font-size: 1.2rem; gap: 0.5rem;}
+      .btn-main, .btn-alt { min-width: 0; font-size: 0.97rem; }
+      form > div[style*="justify-content:space-between"] {
+        flex-direction: column !important;
+        gap: 0.6rem !important;
+      }
+      form > div[style*="justify-content:space-between"] a,
+      form > div[style*="justify-content:space-between"] button {
+        width: 100% !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -279,7 +293,7 @@
             </button>
           </div>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1.1rem; margin-top:1.1rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1.1rem; margin-top:1.3rem;">
           <a href="/register" style="width:48%; text-align:left;">
             <button type="button" class="btn-alt" style="width:100%;">Register</button>
           </a>
