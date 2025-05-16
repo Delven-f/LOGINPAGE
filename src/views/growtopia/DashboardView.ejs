@@ -7,54 +7,80 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-      body {
-        background: linear-gradient(135deg, #c91818 0%, #ff4d4d 100%);
+      /* Border animasi merah */
+      .red-animate-border {
+        border-width: 8px !important;
+        border-style: solid;
+        border-radius: 0.75rem;
+        border-image: linear-gradient(120deg, #ff4d4d, #c91818, #ff7272, #c91818, #ff4d4d) 1;
+        animation: red-border-move 4s linear infinite;
       }
-      .main-box {
-        background: #c91818 !important;
-        border: 8px solid #ff4d4d !important;
-        border-radius: 1rem;
-        box-shadow: 0 0 24px #c9181890;
+      @keyframes red-border-move {
+        0% {
+          border-image: linear-gradient(120deg, #ff4d4d, #c91818, #ff7272, #c91818, #ff4d4d) 1;
+        }
+        100% {
+          border-image: linear-gradient(420deg, #ff4d4d, #c91818, #ff7272, #c91818, #ff4d4d) 1;
+        }
       }
-      .input-container {
-        background: #ff4d4d !important;
-        border: 2px solid #c91818 !important;
-        border-radius: 0.5rem;
+      /* Tambahan untuk kerapihan UI */
+      .login-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #c91818;
+        margin-bottom: 1rem;
+        text-align: center;
+        letter-spacing: 1px;
       }
-      .form-input, .form-input:focus {
+      .login-label {
+        color: #c91818;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+      .form-input {
+        color: #c91818 !important;
         background: transparent !important;
-        color: #fff !important;
         border: none !important;
         outline: none !important;
+        font-size: 1rem;
+        padding-left: 0.5rem;
       }
       .main-btn {
-        background: #c91818 !important;
-        color: #fff !important;
+        background: #c91818;
+        color: #fff;
         font-weight: 600;
+        padding: 0.5rem 1.2rem;
         border-radius: 0.5rem;
         transition: background 0.2s, transform 0.2s;
       }
       .main-btn:hover {
-        background: #ff4d4d !important;
+        background: #ff4d4d;
         transform: scale(1.04);
       }
       .register-btn {
-        background: #ff4d4d !important;
-        color: #fff !important;
+        background: #ff7272;
+        color: #fff;
         font-weight: 600;
+        padding: 0.5rem 1.2rem;
         border-radius: 0.5rem;
         transition: background 0.2s, transform 0.2s;
       }
       .register-btn:hover {
-        background: #c91818 !important;
+        background: #c91818;
         transform: scale(1.04);
       }
-      .login-label, .login-title, .fa-user, .fa-lock, .fa-eye, .fa-eye-slash {
-        color: #fff !important;
+      .input-container {
+        border: 2px solid #ff7272 !important;
+        border-radius: 0.5rem;
+        background: #fff;
+        padding: 0.3rem 0.7rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
       }
       .error-message {
-        background: #ffb3b3 !important;
-        color: #b30000 !important;
+        background: #ffe6e6;
+        color: #c91818;
         border-radius: 0.5rem;
         padding: 0.3rem 0.7rem;
         font-size: 0.85rem;
@@ -63,10 +89,10 @@
       }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen">
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#ff7272] to-[#c91818]">
     <div class="fixed inset-0 flex items-center justify-center">
-        <div class="main-box relative shadow-lg w-80 max-w-full px-4 py-6">
-            <div class="login-title text-2xl font-bold mb-4 text-center">GTPS SERVER</div>
+        <div class="relative shadow-lg w-80 max-w-full px-4 py-6 red-animate-border">
+            <div class="login-title">GTPS SERVER</div>
             <div id="errorDiv" class="hidden error-message">
                 <span id="errorMessage"></span>
             </div>
@@ -76,32 +102,32 @@
                 accept-charset="UTF-8"
                 id="loginForm" class="mt-2">
                 <div>
-                    <label for="loginGrowId" class="login-label block mb-1">GrowID</label>
-                    <div class="input-container flex items-center px-2 py-1 mb-3">
-                        <i class="fas fa-user mr-2"></i>
+                    <label for="loginGrowId" class="login-label">GrowID</label>
+                    <div class="input-container">
+                        <i class="fas fa-user mr-2 text-[#c91818]"></i>
                         <input type="text" name="growId" id="loginGrowId" 
                             class="form-input flex-1"
                             placeholder="Enter your growid">
                     </div>
                 </div>
                 <div>
-                    <label for="loginPassword" class="login-label block mb-1">Password</label>
-                    <div class="input-container flex items-center px-2 py-1 mb-3">
-                        <i class="fas fa-lock mr-2"></i>
+                    <label for="loginPassword" class="login-label">Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock mr-2 text-[#c91818]"></i>
                         <input type="password" name="password" id="loginPassword" 
                             class="form-input flex-1"
                             placeholder="Enter your password">
-                        <button type="button" id="toggleLogPassword" class="ml-2 bg-transparent border-none">
+                        <button type="button" id="toggleLogPassword" class="ml-2 text-[#c91818] bg-transparent border-none">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                 </div>
                 <div class="flex justify-between items-center mt-4">
-                    <button id="loginButton" type="submit" class="main-btn px-4 py-2">
+                    <button id="loginButton" type="submit" class="main-btn">
                         Login
                     </button>
                     <a href="/register">
-                        <button type="button" class="register-btn px-4 py-2">
+                        <button type="button" class="register-btn">
                             Register
                         </button>
                     </a>
@@ -111,15 +137,20 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Auto-fill GrowID from localStorage
             if (localStorage.getItem('growId')) {
                 document.getElementById('loginGrowId').value = localStorage.getItem('growId');
             }
         });
+
+        // Event listener for login button
         document.getElementById('loginButton').addEventListener('click', function (event) {
             event.preventDefault();
+
             const loginForm = document.getElementById('loginForm');
             const uName = document.getElementById('loginGrowId').value;
             const uPass = document.getElementById('loginPassword').value;
+
             if (!uName || !uPass) {
                 document.getElementById('errorDiv').classList.remove('hidden');
                 document.getElementById('errorMessage').innerText = 'Username or Password is empty';
@@ -131,9 +162,11 @@
             } else {
                 document.getElementById('errorDiv').classList.add('hidden');
                 loginForm.submit();
-                localStorage.setItem('growId', uName);
+                localStorage.setItem('growId', uName); // Save GrowID to localStorage
             }
         });
+
+        // Toggle visibility of the password field
         document.getElementById('toggleLogPassword').addEventListener('click', function () {
             const LpasswordField = document.getElementById('loginPassword');
             const LpasswordFieldType = LpasswordField.getAttribute('type');
