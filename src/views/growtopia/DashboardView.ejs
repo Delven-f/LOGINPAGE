@@ -80,7 +80,7 @@
                 return;
             } else if (uName.length < 4 || uPass.length < 4) {
                 document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 4 characters long';
+                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 2 characters long';
                 return;
             } else {
                 loginForm.submit();
