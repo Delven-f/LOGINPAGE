@@ -3,309 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTPS SERVER</title>
+  <title>GTPS SERVER - Simple Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
     body {
+      background: transparent
+      color: #f8f8f8;
+      font-family: Arial, sans-serif;
       min-height: 100vh;
       margin: 0;
-      background: transparent;
-      font-family: 'Montserrat', Arial, sans-serif;
-      color: #e0e3fb;
       display: flex;
-      align-items: center;
       justify-content: center;
-      letter-spacing: 0.01em;
-    }
-    .dashboard-wrap {
-      position: relative;
-      background: rgba(20,22,34,0.97);
-      border-radius: 1.3rem;
-      width: 32rem;
-      height: 29rem;         /* Lebih panjang agar tombol terlihat */
-      max-width: 96vw;
-      margin: 2rem;
-      overflow: hidden;
-      box-shadow: 0 0 32px 0 #00eaff44, 0 0 2px #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .dashboard-wrap::before {
-      content: '';
-      pointer-events: none;
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      border-radius: 1.3rem;
-      padding: 3px;
-      background: linear-gradient(120deg, #00eaff, #8f00ff, #2cb5e8, #202a45, #00eaff 90%);
-      background-size: 300% 300%;
-      animation: neonBorder 7s linear infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-    @keyframes neonBorder {
-      0% {background-position: 0% 50%;}
-      100% {background-position: 100% 50%;}
-    }
-    .tech-illustration {
-      z-index: 2;
-      position: relative;
-      width: 100%;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      background: linear-gradient(90deg, #141a24 40%, #202a45 100%);
-      padding-top: 2.2rem;
-      padding-bottom: 1.1rem;
-      border-bottom: 1px solid #232944;
     }
-    .tech-icons {
-      display: flex;
-      gap: 2rem;
-      font-size: 2.2rem;
-    }
-    .tech-icons i {
-      color: #00eaff;
-      filter: drop-shadow(0 0 8px #00eaff);
-      transition: color 0.3s, filter 0.3s;
-    }
-    .tech-icons i:nth-child(2) { color: #8f00ff; filter: drop-shadow(0 0 8px #8f00ff);}
-    .tech-icons i:nth-child(3) { color: #2cb5e8; filter: drop-shadow(0 0 8px #2cb5e8);}
-    .glass-content {
-      z-index: 2;
-      position: relative;
-      background: rgba(24,28,46,0.93);
-      border-radius: 1.1rem;
-      padding: 1.7rem 1.3rem 1rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 2px 18px 0 #00eaff13;
+    .container {
+      background: #273347;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px #0002;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
       width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      justify-content: flex-start;
+      max-width: 350px;
     }
-    .header-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: #e0e3fb;
-      margin-bottom: 1.1rem;
+    .container h2 {
       text-align: center;
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      text-shadow: 0 1px 10px #00eaff59;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    .input-label {
-      color: #2cb5e8;
-      font-size: 1.09rem;
-      margin-bottom: 0.18rem;
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      font-size: 0.99rem;
+      color: #8fcaff;
       display: block;
-      font-weight: 600;
-      letter-spacing: 0.01em;
+      margin-bottom: 0.25rem;
     }
-    .input-box {
-      background: rgba(34,42,71,0.75);
-      border: 1.5px solid #00eaff;
-      border-radius: 0.8rem;
-      color: #e0e3fb;
-      font-size: 1.05rem;
-      padding-left: 1rem;
-      padding-right: 0.7rem;
-      min-height: 2.35rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 1px 10px 0 #00eaff22;
-      transition: box-shadow 0.2s, border 0.2s;
-      width: 17rem;
-      max-width: 90vw;
-    }
-    .input-box:focus-within {
-      border: 1.5px solid #8f00ff;
-      box-shadow: 0 2px 12px 0 #8f00ff42;
-    }
-    .input-box input {
-      background: transparent;
-      border: none;
-      color: #e0e3fb;
+    .form-group input {
       width: 100%;
-      font-size: 1.08rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #3d4a5d;
+      background: #2d3b4f;
+      color: #f8f8f8;
+      font-size: 1rem;
       outline: none;
-      letter-spacing: 0.01em;
+      box-sizing: border-box;
+      margin-bottom: 0.1rem;
     }
-    .input-box input::placeholder {
-      color: #38cfff99;
-      opacity: 1;
-      font-size: 0.97rem;
-      font-style: italic;
-    }
-    .form-icon {
-      color: #00eaff;
-      margin-right: 0.7rem;
-      font-size: 1.1rem;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .input-box:focus-within .form-icon {
-      color: #8f00ff;
-      transform: scale(1.14);
+    .form-group input:focus {
+      border: 1.5px solid #00eaff;
+      background: #22304a;
     }
     .toggle-password {
-      margin-left:0.7rem;
-      background:transparent;
-      border:none;
-      cursor:pointer;
-      outline: none;
+      background: none;
+      border: none;
+      color: #8fcaff;
+      font-size: 1.1em;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .input-password-wrapper {
+      position: relative;
       display: flex;
       align-items: center;
     }
-    .toggle-password i {
-      color: #38cfff;
-      font-size: 1.05rem;
-      transition: color 0.2s;
-    }
-    .btn-main, .btn-alt {
-      background: linear-gradient(90deg, #00eaff 40%, #8f00ff 100%);
-      color: #fff;
-      border-radius: 1rem;
-      border: none;
-      font-size: 1.09rem;
-      font-weight: bold;
-      padding: 0.8rem 0;
-      margin: 0;
-      box-shadow: 0 2px 14px 0 #00eaff47;
-      transition: background 0.2s, color 0.2s, transform 0.12s;
-      cursor: pointer;
-      letter-spacing: 0.01em;
-      outline: none;
-      width: 100%;
-      min-width: 7rem;
-    }
-    .btn-main:hover, .btn-alt:hover {
-      background: linear-gradient(90deg, #8f00ff 45%, #00eaff 100%);
-      color: #38cfff;
-      transform: scale(1.025);
-      border: 1px solid #00eaff;
-    }
     .error-message {
+      background: #ff287b22;
+      color: #ff286b;
+      font-size: 0.97rem;
+      border-radius: 5px;
+      padding: 0.4rem 0.7rem;
+      margin-bottom: 1rem;
       display: none;
-      background: #341c4e99;
-      color: #ff287b;
-      border-radius: 0.6rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
       text-align: center;
-      margin-bottom: 1.1rem;
-      font-weight: bold;
-      letter-spacing: 0.01em;
-      box-shadow: 0 2px 10px 0 #8f00ff15;
     }
     .error-message.show {
       display: block;
     }
-    .credit-bar {
-      margin-top: 1.1rem;
-      color: #38cfff;
-      font-size: 1.03rem;
-      font-weight: 600;
-      opacity: 0.92;
+    .actions {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      user-select: none;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-      text-shadow: 0 1px 8px #00eaff33;
+      margin-top: 1.3rem;
+      gap: 0.7rem;
     }
-    .credit-bar .fa-code {
-      color: #8f00ff;
-      font-size: 1.2em;
-      margin-right: 0.16em;
+    .actions a, .actions button {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
     }
-    @media (max-width: 800px) {
-      .dashboard-wrap { width: 99vw !important; height: auto; }
-      .glass-content { padding: 1rem 0.5rem !important; }
-      .input-box { width: 95vw !important; }
-      .header-title { font-size: 1.1rem;}
-      .tech-icons { font-size: 1.6rem; gap: 0.7rem;}
-      .btn-main, .btn-alt { min-width: 5rem; font-size: 1rem; }
+    .btn {
+      background: #00eaff;
+      color: #222e3a;
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 0;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .btn:hover {
+      background: #00cbe7;
+    }
+    .btn-alt {
+      background: #3d4a5d;
+      color: #8fcaff;
+      margin-right: 0.5rem;
+    }
+    .btn-alt:hover {
+      background: #273347;
+      color: #00eaff;
+    }
+    .credit {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #8fcaff;
+      font-size: 0.97rem;
+      opacity: 0.9;
     }
     @media (max-width: 480px) {
-      .dashboard-wrap { width: 99vw !important; min-width: unset; }
-      .glass-content { padding: 1rem 0.2rem !important; }
-      .input-box { width: 99vw !important; }
-      .header-title { font-size: 1rem;}
-      .tech-icons { font-size: 1.2rem; gap: 0.5rem;}
-      .btn-main, .btn-alt { min-width: 0; font-size: 0.97rem; }
-      form > div[style*="justify-content:space-between"] {
-        flex-direction: column !important;
-        gap: 0.6rem !important;
-      }
-      form > div[style*="justify-content:space-between"] a,
-      form > div[style*="justify-content:space-between"] button {
-        width: 100% !important;
-      }
+      .container { padding: 1rem 0.5rem; width: 99vw;}
+      .actions { flex-direction: column; gap:0.6rem;}
+      .btn, .btn-alt { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="dashboard-wrap">
-    <div class="tech-illustration">
-      <div class="tech-icons">
-        <i class="fas fa-microchip"></i>
-        <i class="fas fa-robot"></i>
-        <i class="fas fa-bolt"></i>
-      </div>
+  <div class="container">
+    <h2>GTPS SERVER</h2>
+    <div id="errorDiv" class="error-message">
+      <span id="errorMessage"></span>
     </div>
-    <div class="glass-content">
-      <p class="header-title"><i class="fas fa-microchip"></i> GTPS SERVER</p>
-      <div id="errorDiv" class="error-message">
-        <span id="errorMessage"></span>
+    <form method="post" action="/player/growid/login/validate" id="loginForm" autocomplete="off">
+      <div class="form-group">
+        <label for="loginGrowId">GrowID</label>
+        <input type="text" name="growId" id="loginGrowId" placeholder="Enter your GrowID">
       </div>
-      <form 
-        method="post"
-        action="/player/growid/login/validate"
-        accept-charset="UTF-8"
-        id="loginForm" style="width:100%;">
-        <div style="margin-bottom:1.1rem; display: flex; flex-direction: column; align-items: center;">
-          <label for="loginGrowId" class="input-label">GrowID</label>
-          <div class="input-box">
-            <i class="fas fa-user form-icon"></i>
-            <input type="text" name="growId" id="loginGrowId" 
-              placeholder="Enter your growid">
-          </div>
-        </div>
-        <div style="margin-bottom:1.2rem; display: flex; flex-direction: column; align-items: center;">
-          <label for="loginPassword" class="input-label">Password</label>
-          <div class="input-box">
-            <i class="fas fa-lock form-icon"></i>
-            <input type="password" name="password" id="loginPassword"
-              placeholder="Enter your password">
-            <button type="button" id="toggleLogPassword" class="toggle-password" aria-label="Show/Hide Password">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1.1rem; margin-top:1.3rem;">
-          <a href="/register" style="width:48%; text-align:left;">
-            <button type="button" class="btn-alt" style="width:100%;">Register</button>
-          </a>
-          <button id="loginButton" type="submit" class="btn-main" style="width:48%;">
-            Login
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <div class="input-password-wrapper">
+          <input type="password" name="password" id="loginPassword" placeholder="Enter your password">
+          <button type="button" id="toggleLogPassword" class="toggle-password" aria-label="Show/Hide Password">
+            <i class="fas fa-eye"></i>
           </button>
         </div>
-      </form>
-      <div class="credit-bar">
-        <i class="fas fa-code"></i> 
-        <span>Growtopia Private Server - Futuristic Tech!</span>
       </div>
+      <div class="actions">
+        <a href="/register"><button type="button" class="btn btn-alt">Register</button></a>
+        <button id="loginButton" type="submit" class="btn">Login</button>
+      </div>
+    </form>
+    <div class="credit">
+      Growtopia Private Server
     </div>
   </div>
   <script>
@@ -328,7 +183,7 @@
         return;
       } else if (uName.length < 4 || uPass.length < 4) {
         errorDiv.classList.add('show');
-        errorMessage.innerText = 'Username or Password must be at least 4 characters long';
+        errorMessage.innerText = 'Username or Password must be at least 3 characters long';
         return;
       } else {
         errorDiv.classList.remove('show');
