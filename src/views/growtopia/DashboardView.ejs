@@ -6,75 +6,27 @@
     <title>DelvineX - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-    .animated-border-red {
-        position: relative;
-        z-index: 0;
-    }
-    .animated-border-red::before {
-        content: "";
-        position: absolute;
-        inset: -4px;
-        z-index: -1;
-        border-radius: 1rem;
-        background: linear-gradient(270deg, #f44336, #b71c1c, #ff1744, #f44336);
-        background-size: 400% 400%;
-        animation: borderRedMove 6s linear infinite;
-    }
-    @keyframes borderRedMove {
-        0% {background-position: 0% 50%;}
-        100% {background-position: 100% 50%;}
-    }
-    .led-animated-border-red {
-        position: relative;
-        z-index: 0;
-    }
-    .led-animated-border-red::before {
-        content: "";
-        position: absolute;
-        inset: -7px;
-        z-index: -2;
-        border-radius: 1.2rem;
-        padding: 0;
-        background: repeating-linear-gradient(
-            90deg,
-            #ff1744 0px,
-            #ff1744 8px,
-            #161d27 8px,
-            #161d27 16px
-        );
-        background-size: 32px 32px;
-        animation: ledBorderRedMove 1s linear infinite;
-        width: calc(100% + 14px);
-        height: calc(100% + 14px);
-        pointer-events: none;
-        box-sizing: border-box;
-        display: block;
-    }
-    @keyframes ledBorderRedMove {
-        from { background-position: 0 0; }
-        to   { background-position: 32px 0; }
-    }
-    .animated-border-red.led-animated-border-red::before {
-        z-index: -2;
-    }
-    .animated-border-red::before {
-        z-index: -1;
-    }
-    </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#2b4d6d] via-[#1a2636] to-[#6f2232]">
-    <div class="fixed inset-0 flex items-center justify-center">
-        <div class="relative bg-[#2b4d6d]/90 border-4 border-[#f44336] shadow-2xl p-8 w-[390px] rounded-2xl animated-border-red led-animated-border-red">
-            <p class="text-white text-center font-extrabold text-4xl tracking-wide drop-shadow-lg mb-5">GTPS SERVER</p>
-            <!-- Animasi pemanah dihapus, hanya logo dashboard -->
-            <div class="flex justify-center my-3">
-                <div class="rounded-full bg-[#b71c1c] w-20 h-20 flex items-center justify-center shadow-lg border-4 border-[#ff1744]">
-                    <i class="fas fa-server text-white text-4xl"></i>
+    <div class="flex items-center justify-center min-h-screen w-full">
+        <div class="max-w-md w-full bg-[#24344e] bg-opacity-90 border-2 border-[#f44336] shadow-2xl p-8 rounded-2xl">
+            <p class="text-white text-center font-extrabold text-3xl tracking-wide drop-shadow mb-6">GTPS SERVER</p>
+            <!-- Ubisoft Logo SVG -->
+            <div class="flex justify-center my-4">
+                <div class="rounded-full bg-white w-20 h-20 flex items-center justify-center shadow-lg border-4 border-[#f44336]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-14 h-14">
+                        <g>
+                            <circle cx="64" cy="64" r="62" fill="none" stroke="#000" stroke-width="4"/>
+                            <path d="M64,18c25.4,0,46,20.6,46,46c0,25.4-20.6,46-46,46c-15.6,0-29.4-7.8-37.7-19.8" fill="none" stroke="#000" stroke-width="6"/>
+                            <path d="M64,34c17.1,0,31,13.9,31,31c0,17.1-13.9,31-31,31c-10.5,0-19.7-5.3-25-13.4" fill="none" stroke="#000" stroke-width="5"/>
+                            <path d="M64,48c8.8,0,16,7.2,16,16c0,8.8-7.2,16-16,16c-5.3,0-10-2.7-12.8-6.8" fill="none" stroke="#000" stroke-width="4"/>
+                            <circle cx="64" cy="64" r="8" fill="none" stroke="#000" stroke-width="3"/>
+                        </g>
+                    </svg>
                 </div>
             </div>
             <!-- Error Message -->
-            <div id="errorDiv" class="hidden bg-red-500 text-white p-3 my-4 rounded text-center shadow-md">
+            <div id="errorDiv" class="hidden bg-red-500 text-white p-3 my-4 rounded text-center shadow-md text-base">
                 <span id="errorMessage"></span>
             </div>
             <!-- Login Form -->
@@ -82,36 +34,36 @@
                 method="post"
                 action="/player/growid/login/validate"
                 accept-charset="UTF-8"
-                id="loginForm" class="mt-6 bg-transparent">
-                <div class="mb-3">
-                    <label for="loginGrowId" class="block text-white text-lg font-semibold mb-1">GrowID</label>
-                    <div class="flex items-center border-2 border-[#ff1744] rounded-lg bg-[#2b4d6d]/70 px-2 py-2 transition focus-within:border-white">
-                        <i class="fas fa-user text-white mr-3 text-lg"></i>
+                id="loginForm" class="mt-4">
+                <div class="mb-4">
+                    <label for="loginGrowId" class="block text-white text-base font-semibold mb-1">GrowID</label>
+                    <div class="flex items-center border border-[#f44336] rounded-lg bg-[#212f45] px-3 py-2 focus-within:border-white">
+                        <i class="fas fa-user text-white mr-2 text-lg"></i>
                         <input type="text" name="growId" id="loginGrowId" 
-                               class="w-full bg-transparent text-white text-lg placeholder-white focus:outline-none" 
-                               placeholder="Enter your growid">
+                               class="w-full bg-transparent text-white text-base placeholder-gray-300 focus:outline-none" 
+                               placeholder="Enter your GrowID">
                     </div>
                 </div>
-                <div class="mb-4">
-                    <label for="loginPassword" class="block text-white text-lg font-semibold mb-1">Password</label>
-                    <div class="flex items-center border-2 border-[#ff1744] rounded-lg bg-[#2b4d6d]/70 px-2 py-2 transition focus-within:border-white">
-                        <i class="fas fa-lock text-white mr-3 text-lg"></i>
+                <div class="mb-5">
+                    <label for="loginPassword" class="block text-white text-base font-semibold mb-1">Password</label>
+                    <div class="flex items-center border border-[#f44336] rounded-lg bg-[#212f45] px-3 py-2 focus-within:border-white">
+                        <i class="fas fa-lock text-white mr-2 text-lg"></i>
                         <input type="password" name="password" id="loginPassword" 
-                               class="w-full bg-transparent text-white text-lg placeholder-white focus:outline-none" 
+                               class="w-full bg-transparent text-white text-base placeholder-gray-300 focus:outline-none" 
                                placeholder="Enter your password">
-                        <button type="button" id="toggleLogPassword" class="text-white ml-3 focus:outline-none text-lg">
+                        <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-lg" tabindex="-1">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                 </div>
                 <div class="flex justify-between items-center mt-7">
-                    <button id="loginButton" 
-                            class="px-6 py-2 rounded-lg bg-[#f44336] text-white text-lg font-semibold shadow-md hover:bg-[#b71c1c] transition duration-300 ease-in-out transform hover:scale-105">
+                    <button id="loginButton" type="submit"
+                            class="px-6 py-2 rounded-lg bg-[#f44336] text-white text-base font-semibold shadow hover:bg-[#b71c1c] transition duration-150 ease-in-out">
                         Login
                     </button>
                     <a href="/register">
                         <button type="button" id="registerButton" 
-                                class="px-6 py-2 rounded-lg bg-[#ff1744] text-white text-lg font-semibold shadow-md hover:bg-[#c62828] transition duration-300 ease-in-out transform hover:scale-105">
+                                class="px-6 py-2 rounded-lg bg-[#ff1744] text-white text-base font-semibold shadow hover:bg-[#c62828] transition duration-150 ease-in-out">
                             Register
                         </button>
                     </a>
