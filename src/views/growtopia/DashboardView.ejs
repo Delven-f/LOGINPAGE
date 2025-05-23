@@ -3,30 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DelvineX - Dashboard</title>
+    <title>DelvineX - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom smooth blue gradient for background */
+        body {
+            background: linear-gradient(135deg, #b8c6db 0%, #6fa3ef 100%);
+        }
+        /* Subtle glassmorphism effect for card */
+        .glass-card {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            border: 1.5px solid rgba(255,255,255,0.25);
+        }
+        /* Custom blue for accent */
+        .blue-accent {
+            background: linear-gradient(90deg, #489ad8 0%, #4252c0 100%);
+        }
+        .blue-accent-2 {
+            background: linear-gradient(90deg, #6fa3ef 0%, #b8c6db 100%);
+        }
+    </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#2b4d6d] via-[#1a2636] to-[#6f2232]">
-    <div class="flex items-center justify-center min-h-screen w-full">
-        <div class="max-w-md w-full bg-[transparent] bg-opacity-90 border-2 border-[#f44336] shadow-2xl p-8 rounded-2xl">
-            <p class="text-white text-center font-extrabold text-3xl tracking-wide drop-shadow mb-6">GTPS SERVER</p>
-            <!-- Ubisoft Logo SVG -->
-            <div class="flex justify-center my-4">
-                <div class="rounded-full bg-white w-20 h-20 flex items-center justify-center shadow-lg border-4 border-[#f44336]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-14 h-14">
-                        <g>
-                            <circle cx="64" cy="64" r="62" fill="none" stroke="#000" stroke-width="4"/>
-                            <path d="M64,18c25.4,0,46,20.6,46,46c0,25.4-20.6,46-46,46c-15.6,0-29.4-7.8-37.7-19.8" fill="none" stroke="#000" stroke-width="6"/>
-                            <path d="M64,34c17.1,0,31,13.9,31,31c0,17.1-13.9,31-31,31c-10.5,0-19.7-5.3-25-13.4" fill="none" stroke="#000" stroke-width="5"/>
-                            <path d="M64,48c8.8,0,16,7.2,16,16c0,8.8-7.2,16-16,16c-5.3,0-10-2.7-12.8-6.8" fill="none" stroke="#000" stroke-width="4"/>
-                            <circle cx="64" cy="64" r="8" fill="none" stroke="#000" stroke-width="3"/>
-                        </g>
-                    </svg>
+<body class="flex flex-col items-center justify-center min-h-screen">
+    <div class="flex items-center justify-center min-h-screen w-full px-4">
+        <div class="glass-card max-w-md w-full p-10">
+            <div class="flex flex-col items-center mb-8">
+                <div class="relative flex items-center justify-center mb-4">
+                    <!-- Enhanced Ubisoft Logo SVG -->
+                    <div class="rounded-full shadow-xl border-4 border-[#489ad8] bg-white bg-opacity-80 w-24 h-24 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-20 h-20">
+                          <defs>
+                            <radialGradient id="blueUbisoft" cx="70" cy="70" r="66" gradientUnits="userSpaceOnUse">
+                              <stop offset="0%" stop-color="#489ad8"/>
+                              <stop offset="80%" stop-color="#4252c0"/>
+                              <stop offset="100%" stop-color="#b8c6db"/>
+                            </radialGradient>
+                          </defs>
+                          <circle cx="70" cy="70" r="66" fill="url(#blueUbisoft)" stroke="#fff" stroke-width="4"/>
+                          <path d="M70,22c27.5,0,50,22.5,50,50s-22.5,50-50,50c-17,0-32.1-8.6-41.3-21.7" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+                          <path d="M70,40c18.8,0,34,15.2,34,34s-15.2,34-34,34c-11.5,0-21.6-5.8-27.5-14.7" fill="none" stroke="#fff" stroke-width="5"/>
+                          <path d="M70,57c9.7,0,17.5,7.8,17.5,17.5S79.7,92,70,92c-5.8,0-10.8-3-13.7-7.5" fill="none" stroke="#fff" stroke-width="4"/>
+                          <circle cx="70" cy="74.5" r="8.5" fill="none" stroke="#fff" stroke-width="3"/>
+                        </svg>
+                    </div>
                 </div>
+                <h1 class="text-3xl font-extrabold text-[#4252c0] tracking-wide drop-shadow mb-1">GTPS SERVER</h1>
+                <p class="text-lg text-blue-900 font-medium tracking-wide opacity-80">Welcome back! Please login to your account</p>
             </div>
             <!-- Error Message -->
-            <div id="errorDiv" class="hidden bg-red-500 text-white p-3 my-4 rounded text-center shadow-md text-base">
+            <div id="errorDiv" class="hidden bg-red-400 text-white p-3 my-4 rounded-lg text-center shadow-md text-base font-medium transition-all duration-200">
                 <span id="errorMessage"></span>
             </div>
             <!-- Login Form -->
@@ -34,36 +64,36 @@
                 method="post"
                 action="/player/growid/login/validate"
                 accept-charset="UTF-8"
-                id="loginForm" class="mt-4">
-                <div class="mb-4">
-                    <label for="loginGrowId" class="block text-white text-base font-semibold mb-1">GrowID</label>
-                    <div class="flex items-center border border-[#f44336] rounded-lg bg-[#212f45] px-3 py-2 focus-within:border-white">
-                        <i class="fas fa-user text-white mr-2 text-lg"></i>
+                id="loginForm">
+                <div class="mb-5">
+                    <label for="loginGrowId" class="block text-blue-900 text-base font-semibold mb-1">GrowID</label>
+                    <div class="flex items-center border-2 border-[#489ad8] rounded-xl bg-white bg-opacity-70 px-3 py-2 focus-within:border-[#4252c0] shadow-sm">
+                        <i class="fas fa-user text-[#489ad8] mr-2 text-lg"></i>
                         <input type="text" name="growId" id="loginGrowId" 
-                               class="w-full bg-transparent text-white text-base placeholder-gray-300 focus:outline-none" 
-                               placeholder="Enter your GrowID">
+                               class="w-full bg-transparent text-blue-900 text-base font-medium placeholder-blue-400 focus:outline-none"
+                               placeholder="Enter your GrowID" autocomplete="username">
                     </div>
                 </div>
-                <div class="mb-5">
-                    <label for="loginPassword" class="block text-white text-base font-semibold mb-1">Password</label>
-                    <div class="flex items-center border border-[#f44336] rounded-lg bg-[#212f45] px-3 py-2 focus-within:border-white">
-                        <i class="fas fa-lock text-white mr-2 text-lg"></i>
+                <div class="mb-7">
+                    <label for="loginPassword" class="block text-blue-900 text-base font-semibold mb-1">Password</label>
+                    <div class="flex items-center border-2 border-[#489ad8] rounded-xl bg-white bg-opacity-70 px-3 py-2 focus-within:border-[#4252c0] shadow-sm">
+                        <i class="fas fa-lock text-[#489ad8] mr-2 text-lg"></i>
                         <input type="password" name="password" id="loginPassword" 
-                               class="w-full bg-transparent text-white text-base placeholder-gray-300 focus:outline-none" 
-                               placeholder="Enter your password">
-                        <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-lg" tabindex="-1">
+                               class="w-full bg-transparent text-blue-900 text-base font-medium placeholder-blue-400 focus:outline-none"
+                               placeholder="Enter your password" autocomplete="current-password">
+                        <button type="button" id="toggleLogPassword" class="text-[#489ad8] ml-2 focus:outline-none text-lg" tabindex="-1">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                 </div>
-                <div class="flex justify-between items-center mt-7">
+                <div class="flex justify-between items-center mt-8">
                     <button id="loginButton" type="submit"
-                            class="px-6 py-2 rounded-lg bg-[#f44336] text-white text-base font-semibold shadow hover:bg-[#b71c1c] transition duration-150 ease-in-out">
+                            class="px-7 py-2.5 rounded-xl blue-accent text-white text-base font-semibold shadow-lg hover:scale-105 hover:bg-[#357ab8] transition duration-150 ease-in-out focus:outline-none">
                         Login
                     </button>
-                    <a href="/register">
-                        <button type="button" id="registerButton" 
-                                class="px-6 py-2 rounded-lg bg-[#ff1744] text-white text-base font-semibold shadow hover:bg-[#c62828] transition duration-150 ease-in-out">
+                    <a href="/register" class="ml-2">
+                        <button type="button" id="registerButton"
+                                class="px-7 py-2.5 rounded-xl blue-accent-2 text-[#4252c0] text-base font-semibold shadow-lg hover:scale-105 hover:text-blue-900 transition duration-150 ease-in-out focus:outline-none">
                             Register
                         </button>
                     </a>
@@ -84,8 +114,8 @@
             event.preventDefault();
 
             const loginForm = document.getElementById('loginForm');
-            const uName = document.getElementById('loginGrowId').value;
-            const uPass = document.getElementById('loginPassword').value;
+            const uName = document.getElementById('loginGrowId').value.trim();
+            const uPass = document.getElementById('loginPassword').value.trim();
 
             if (!uName || !uPass) {
                 document.getElementById('errorDiv').classList.remove('hidden');
@@ -96,9 +126,18 @@
                 document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 4 characters long';
                 return;
             } else {
+                document.getElementById('errorDiv').classList.add('hidden');
                 loginForm.submit();
                 localStorage.setItem('growId', uName); // Save GrowID to localStorage
             }
+        });
+
+        // Remove error on input
+        document.getElementById('loginGrowId').addEventListener('input', function () {
+            document.getElementById('errorDiv').classList.add('hidden');
+        });
+        document.getElementById('loginPassword').addEventListener('input', function () {
+            document.getElementById('errorDiv').classList.add('hidden');
         });
 
         // Toggle visibility of the password field
