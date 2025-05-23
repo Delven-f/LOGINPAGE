@@ -14,9 +14,9 @@
     .animated-border::before {
         content: "";
         position: absolute;
-        inset: -4px; /* Ukuran border (sama dengan border-4 Tailwind) */
+        inset: -4px;
         z-index: -1;
-        border-radius: 1rem; /* Sesuaikan dengan rounded-2xl */
+        border-radius: 1rem;
         background: linear-gradient(270deg, #87b8cc, #00b8ff, #4caf50, #87b8cc);
         background-size: 600% 600%;
         animation: borderMove 5s linear infinite;
@@ -25,7 +25,6 @@
         0% {background-position: 0% 50%;}
         100% {background-position: 100% 50%;}
     }
-    /* LED RUNNING ANIMATION BORDER */
     .led-animated-border {
         position: relative;
         z-index: 0;
@@ -56,7 +55,6 @@
         from { background-position: 0 0; }
         to   { background-position: 32px 0; }
     }
-    /* Combine animated-border and led-animated-border for double effect if needed */
     .animated-border.led-animated-border::before {
         z-index: -2;
     }
@@ -69,6 +67,31 @@
     <div class="fixed inset-0 flex items-center justify-center">
         <div class="relative bg-[#2b4d6d] border-4 border-[rgb(135,184,204)] shadow-lg p-8 w-[390px] rounded-2xl animated-border led-animated-border">
             <p class="text-white text-center font-bold text-3xl">GTPS SERVER</p>
+            <!-- Animasi Orang Memegang Panah dan Membidik Target -->
+            <div class="flex justify-center my-4">
+              <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Target -->
+                <circle cx="170" cy="60" r="20" fill="#fff" stroke="#b71c1c" stroke-width="4"/>
+                <circle cx="170" cy="60" r="12" fill="#fff" stroke="#1976d2" stroke-width="3"/>
+                <circle cx="170" cy="60" r="5" fill="#b71c1c"/>
+                <!-- Archer Body -->
+                <ellipse cx="55" cy="90" rx="18" ry="25" fill="#90caf9"/>
+                <!-- Head -->
+                <circle cx="55" cy="55" r="13" fill="#ffe0b2"/>
+                <!-- Arm holding bow -->
+                <rect x="69" y="72" width="38" height="6" rx="3" fill="#ffe0b2" transform="rotate(-10 69 72)"/>
+                <!-- Bow -->
+                <path d="M110 75 Q120 60 110 45" stroke="#8d6e63" stroke-width="4" fill="none"/>
+                <!-- Arrow (animated) -->
+                <g>
+                  <animateTransform attributeName="transform" type="translate" from="0 0" to="55 0" begin="0s" dur="1.2s" repeatCount="indefinite"/>
+                  <rect x="100" y="73" width="34" height="2" rx="1" fill="#616161"/>
+                  <polygon points="134,74 140,74 137,70 137,78" fill="#b71c1c"/>
+                </g>
+                <!-- String -->
+                <line x1="110" y1="45" x2="110" y2="75" stroke="#fff" stroke-width="2"/>
+              </svg>
+            </div>
             <!-- Error Message -->
             <div id="errorDiv" class="hidden bg-red-500 text-white p-3 my-4 rounded text-center">
                 <span id="errorMessage"></span>
