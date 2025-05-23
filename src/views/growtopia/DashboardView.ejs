@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            /* background: transparent !important; */
-            background: none !important; /* Hilangkan background apapun */
+            background: none !important;
             min-height: 100vh;
             overflow-x: hidden;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.80); /* lebih tebal */
             box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
@@ -22,11 +21,11 @@
             border: 1.5px solid rgba(180, 180, 180, 0.18);
         }
         .neutral-accent {
-            background: rgba(255,255,255,0.55);
+            background: rgba(255,255,255,0.85); /* lebih solid */
             transition: background 0.2s;
         }
         .neutral-accent-2 {
-            background: rgba(243,244,246,0.70);
+            background: rgba(243,244,246,0.95); /* lebih solid */
             transition: background 0.2s;
         }
         .neutral-border {
@@ -42,7 +41,6 @@
             position: relative;
             z-index: 2;
         }
-        /* Optional: remove wave animation */
         .wave, .w-full.absolute.overflow-hidden.z-0 {
             display: none !important;
         }
@@ -53,8 +51,8 @@
         <div class="glass-card max-w-sm w-full p-8 md:p-7">
             <div class="flex flex-col items-center mb-7">
                 <div class="relative flex items-center justify-center mb-3">
-                    <!-- Logo -->
                     <div class="rounded-full shadow-xl border-4 border-gray-200 bg-white bg-opacity-80 w-20 h-20 flex items-center justify-center">
+                        <!-- SVG Logo -->
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-16 h-16">
                           <defs>
                             <radialGradient id="grayGlass" cx="70" cy="70" r="66" gradientUnits="userSpaceOnUse">
@@ -74,11 +72,9 @@
                 <h1 class="text-2xl font-extrabold neutral-text tracking-wide drop-shadow mb-0.5">GTPS SERVER</h1>
                 <p class="text-base neutral-text font-medium tracking-wide opacity-80">Welcome back! login to your account</p>
             </div>
-            <!-- Error Message -->
             <div id="errorDiv" class="hidden bg-red-400 text-white p-2 my-3 rounded-lg text-center shadow-md text-sm font-medium transition-all duration-200">
                 <span id="errorMessage"></span>
             </div>
-            <!-- Login Form -->
             <form 
                 method="post"
                 action="/player/growid/login/validate"
@@ -107,12 +103,12 @@
                 </div>
                 <div class="flex justify-between items-center mt-6">
                     <button id="loginButton" type="submit"
-                            class="px-5 py-2 rounded-xl neutral-accent neutral-text text-sm font-semibold shadow-lg hover:bg-gray-200 hover:text-black transition duration-150 ease-in-out focus:outline-none">
+                        class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-lg transition duration-150 ease-in-out focus:outline-none">
                         Login
                     </button>
                     <a href="/register" class="ml-2">
                         <button type="button" id="registerButton"
-                                class="px-5 py-2 rounded-xl neutral-accent-2 neutral-text text-sm font-semibold shadow-lg hover:bg-gray-300 hover:text-black transition duration-150 ease-in-out focus:outline-none">
+                            class="px-5 py-2 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-semibold shadow-lg transition duration-150 ease-in-out focus:outline-none">
                             Register
                         </button>
                     </a>
