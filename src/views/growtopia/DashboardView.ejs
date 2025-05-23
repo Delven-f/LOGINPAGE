@@ -7,41 +7,65 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Custom smooth blue gradient for background */
         body {
-            background: linear-gradient(135deg, #b8c6db 0%, #6fa3ef 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        /* Subtle glassmorphism effect for card - SOFT BORDER */
         .glass-card {
-            background: transparent;
-            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            border: 1.5px solid rgba(100, 149, 237, 0.18); /* soft blue border */
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.20);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 1.5rem;
+            border: 1.5px solid rgba(59, 130, 246, 0.18);
         }
-        /* Custom blue for accent */
         .blue-accent {
-            background: linear-gradient(135deg, #b8c6db 0%, #6fa3ef 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
         }
         .blue-accent-2 {
-            background: linear-gradient(135deg, #b8c6db 0%, #6fa3ef 100%);
+            background: linear-gradient(135deg, #60a5fa 0%, #1e40af 100%);
+        }
+        /* Wave animation keyframes */
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .wave {
+            position: absolute;
+            left: 0;
+            width: 200%;
+            min-width: 1200px;
+            height: 70px;
+            z-index: 1;
+            animation: wave 10s linear infinite;
+        }
+        .card-container {
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
-    <div class="flex items-center justify-center min-h-screen w-full px-4">
-        <div class="glass-card max-w-md w-full p-10">
-            <div class="flex flex-col items-center mb-8">
-                <div class="relative flex items-center justify-center mb-4">
-                    <!-- Enhanced Ubisoft Logo SVG -->
-                    <div class="rounded-full shadow-xl border-4 border-[#489ad8] bg-white bg-opacity-80 w-24 h-24 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-20 h-20">
+    <!-- Top Animated Wave SVG -->
+    <div style="top:0;" class="w-full absolute overflow-hidden z-0">
+        <svg class="wave" viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#2563eb" fill-opacity="0.30" d="M0,30 C360,80 1080,-10 1440,30 L1440,70 L0,70 Z"></path>
+            <path fill="#3b82f6" fill-opacity="0.3" d="M0,60 C400,10 1100,80 1440,40 L1440,70 L0,70 Z"></path>
+        </svg>
+    </div>
+    <div class="flex items-center justify-center min-h-screen w-full px-4 card-container">
+        <div class="glass-card max-w-sm w-full p-8 md:p-7">
+            <div class="flex flex-col items-center mb-7">
+                <div class="relative flex items-center justify-center mb-3">
+                    <!-- Logo -->
+                    <div class="rounded-full shadow-xl border-4 border-[#3b82f6] bg-white bg-opacity-80 w-20 h-20 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-16 h-16">
                           <defs>
                             <radialGradient id="blueUbisoft" cx="70" cy="70" r="66" gradientUnits="userSpaceOnUse">
-                              <stop offset="0%" stop-color="#489ad8"/>
-                              <stop offset="80%" stop-color="#4252c0"/>
-                              <stop offset="100%" stop-color="#b8c6db"/>
+                              <stop offset="0%" stop-color="#3b82f6"/>
+                              <stop offset="80%" stop-color="#1e40af"/>
+                              <stop offset="100%" stop-color="#60a5fa"/>
                             </radialGradient>
                           </defs>
                           <circle cx="70" cy="70" r="66" fill="url(#blueUbisoft)" stroke="#fff" stroke-width="4"/>
@@ -52,11 +76,11 @@
                         </svg>
                     </div>
                 </div>
-                <h1 class="text-3xl font-extrabold text-[#4252c0] tracking-wide drop-shadow mb-1">GTPS SERVER</h1>
-                <p class="text-lg text-blue-900 font-medium tracking-wide opacity-80">Welcome back! login to your account</p>
+                <h1 class="text-2xl font-extrabold text-[#1e3a8a] tracking-wide drop-shadow mb-0.5">GTPS SERVER</h1>
+                <p class="text-base text-blue-900 font-medium tracking-wide opacity-80">Welcome back! login to your account</p>
             </div>
             <!-- Error Message -->
-            <div id="errorDiv" class="hidden bg-red-400 text-white p-3 my-4 rounded-lg text-center shadow-md text-base font-medium transition-all duration-200">
+            <div id="errorDiv" class="hidden bg-red-400 text-white p-2 my-3 rounded-lg text-center shadow-md text-sm font-medium transition-all duration-200">
                 <span id="errorMessage"></span>
             </div>
             <!-- Login Form -->
@@ -65,35 +89,35 @@
                 action="/player/growid/login/validate"
                 accept-charset="UTF-8"
                 id="loginForm">
-                <div class="mb-5">
-                    <label for="loginGrowId" class="block text-blue-900 text-base font-semibold mb-1">GrowID</label>
-                    <div class="flex items-center border-2 border-[#489ad8] rounded-xl bg-white bg-opacity-70 px-3 py-2 focus-within:border-[#4252c0] shadow-sm">
-                        <i class="fas fa-user text-[#489ad8] mr-2 text-lg"></i>
+                <div class="mb-4">
+                    <label for="loginGrowId" class="block text-blue-900 text-sm font-semibold mb-1">GrowID</label>
+                    <div class="flex items-center border-2 border-[#3b82f6] rounded-xl bg-white bg-opacity-70 px-3 py-1.5 focus-within:border-[#1e40af] shadow-sm">
+                        <i class="fas fa-user text-[#3b82f6] mr-2 text-base"></i>
                         <input type="text" name="growId" id="loginGrowId" 
-                               class="w-full bg-transparent text-blue-900 text-base font-medium placeholder-blue-400 focus:outline-none"
+                               class="w-full bg-transparent text-blue-900 text-sm font-medium placeholder-blue-400 focus:outline-none"
                                placeholder="Enter your GrowID" autocomplete="username">
                     </div>
                 </div>
-                <div class="mb-7">
-                    <label for="loginPassword" class="block text-blue-900 text-base font-semibold mb-1">Password</label>
-                    <div class="flex items-center border-2 border-[#489ad8] rounded-xl bg-white bg-opacity-70 px-3 py-2 focus-within:border-[#4252c0] shadow-sm">
-                        <i class="fas fa-lock text-[#489ad8] mr-2 text-lg"></i>
+                <div class="mb-5">
+                    <label for="loginPassword" class="block text-blue-900 text-sm font-semibold mb-1">Password</label>
+                    <div class="flex items-center border-2 border-[#3b82f6] rounded-xl bg-white bg-opacity-70 px-3 py-1.5 focus-within:border-[#1e40af] shadow-sm">
+                        <i class="fas fa-lock text-[#3b82f6] mr-2 text-base"></i>
                         <input type="password" name="password" id="loginPassword" 
-                               class="w-full bg-transparent text-blue-900 text-base font-medium placeholder-blue-400 focus:outline-none"
+                               class="w-full bg-transparent text-blue-900 text-sm font-medium placeholder-blue-400 focus:outline-none"
                                placeholder="Enter your password" autocomplete="current-password">
-                        <button type="button" id="toggleLogPassword" class="text-[#489ad8] ml-2 focus:outline-none text-lg" tabindex="-1">
+                        <button type="button" id="toggleLogPassword" class="text-[#3b82f6] ml-2 focus:outline-none text-base" tabindex="-1">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                 </div>
-                <div class="flex justify-between items-center mt-8">
+                <div class="flex justify-between items-center mt-6">
                     <button id="loginButton" type="submit"
-                            class="px-7 py-2.5 rounded-xl blue-accent text-white text-base font-semibold shadow-lg hover:scale-105 hover:bg-[#357ab8] transition duration-150 ease-in-out focus:outline-none">
+                            class="px-5 py-2 rounded-xl blue-accent text-white text-sm font-semibold shadow-lg hover:scale-105 hover:bg-[#2563eb] transition duration-150 ease-in-out focus:outline-none">
                         Login
                     </button>
                     <a href="/register" class="ml-2">
                         <button type="button" id="registerButton"
-                                class="px-7 py-2.5 rounded-xl blue-accent-2 text-[#4252c0] text-base font-semibold shadow-lg hover:scale-105 hover:text-blue-900 transition duration-150 ease-in-out focus:outline-none">
+                                class="px-5 py-2 rounded-xl blue-accent-2 text-[#1e40af] text-sm font-semibold shadow-lg hover:scale-105 hover:text-blue-900 transition duration-150 ease-in-out focus:outline-none">
                             Register
                         </button>
                     </a>
@@ -101,22 +125,24 @@
             </form>
         </div>
     </div>
+    <!-- Bottom Animated Wave SVG -->
+    <div style="bottom:0;" class="w-full absolute overflow-hidden z-0">
+        <svg class="wave" style="animation-direction: reverse;" viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#2563eb" fill-opacity="0.25" d="M0,30 C360,80 1080,-10 1440,30 L1440,70 L0,70 Z"></path>
+            <path fill="#3b82f6" fill-opacity="0.2" d="M0,60 C400,10 1100,80 1440,40 L1440,70 L0,70 Z"></path>
+        </svg>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Auto-fill GrowID from localStorage
             if (localStorage.getItem('growId')) {
                 document.getElementById('loginGrowId').value = localStorage.getItem('growId');
             }
         });
-
-        // Event listener for login button
         document.getElementById('loginButton').addEventListener('click', function (event) {
             event.preventDefault();
-
             const loginForm = document.getElementById('loginForm');
             const uName = document.getElementById('loginGrowId').value.trim();
             const uPass = document.getElementById('loginPassword').value.trim();
-
             if (!uName || !uPass) {
                 document.getElementById('errorDiv').classList.remove('hidden');
                 document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
@@ -128,19 +154,15 @@
             } else {
                 document.getElementById('errorDiv').classList.add('hidden');
                 loginForm.submit();
-                localStorage.setItem('growId', uName); // Save GrowID to localStorage
+                localStorage.setItem('growId', uName);
             }
         });
-
-        // Remove error on input
         document.getElementById('loginGrowId').addEventListener('input', function () {
             document.getElementById('errorDiv').classList.add('hidden');
         });
         document.getElementById('loginPassword').addEventListener('input', function () {
             document.getElementById('errorDiv').classList.add('hidden');
         });
-
-        // Toggle visibility of the password field
         document.getElementById('toggleLogPassword').addEventListener('click', function () {
             const LpasswordField = document.getElementById('loginPassword');
             const LpasswordFieldType = LpasswordField.getAttribute('type');
