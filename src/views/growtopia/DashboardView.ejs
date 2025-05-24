@@ -101,52 +101,61 @@
                         </button>
                     </div>
                 </div>
-               <div class="flex justify-between items-center mt-6">
-    <button id="loginButton" type="submit"
-        class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-lg transition duration-150 ease-in-out focus:outline-none">
-        Login
-    </button>
-    <a href="/register"
-       id="registerButton"
-       class="ml-2 px-5 py-2 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-semibold shadow-lg transition duration-150 ease-in-out focus:outline-none text-center">
-        Register
-    </a>
-</div>
+              <div class="flex justify-between items-center mt-3">
+                    <!-- Tombol Login -->
+                    <button id="loginButton" 
+                            class="px-2 py-1 rounded bg-[#00b8ff] text-white text-xs hover:bg-[#06a4dd] transition duration-300 ease-in-out transform hover:scale-105">
+                        Login
+                    </button>
+
+                    <!-- Tombol Register -->
+                    <a href="/register">
+                        <button id="registerButton" 
+                                class="px-2 py-1 rounded bg-[#4caf50] text-white text-xs hover:bg-[#43a047] transition duration-300 ease-in-out transform hover:scale-105">
+                            Register
+                        </button>
+                    </a>
                 </div>
             </form>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+       document.addEventListener('DOMContentLoaded', function () {
+            // Auto-fill GrowID from localStorage
             if (localStorage.getItem('growId')) {
                 document.getElementById('loginGrowId').value = localStorage.getItem('growId');
             }
+
+            // Debugging log for auto-filled values
+            console.log('GrowID auto-filled:', document.getElementById('loginGrowId').value);
         });
+
+        // Event listener for login button
         document.getElementById('loginButton').addEventListener('click', function (event) {
             event.preventDefault();
+
             const loginForm = document.getElementById('loginForm');
-            const uName = document.getElementById('loginGrowId').value.trim();
-            const uPass = document.getElementById('loginPassword').value.trim();
+            const uName = document.getElementById('loginGrowId').value;
+            const uPass = document.getElementById('loginPassword').value;
+
+            // Debugging log for input values
+            console.log('GrowID:', uName, 'Password:', uPass);
+
             if (!uName || !uPass) {
                 document.getElementById('errorDiv').classList.remove('hidden');
                 document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
                 return;
             } else if (uName.length < 4 || uPass.length < 4) {
                 document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 4 characters long';
+                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 3 characters long';
                 return;
             } else {
-                document.getElementById('errorDiv').classList.add('hidden');
                 loginForm.submit();
-                localStorage.setItem('growId', uName);
+                localStorage.setItem('growId', uName); // Save GrowID to localStorage
             }
         });
-        document.getElementById('loginGrowId').addEventListener('input', function () {
-            document.getElementById('errorDiv').classList.add('hidden');
-        });
-        document.getElementById('loginPassword').addEventListener('input', function () {
-            document.getElementById('errorDiv').classList.add('hidden');
-        });
+
+        // Toggle visibility of the password field
         document.getElementById('toggleLogPassword').addEventListener('click', function () {
             const LpasswordField = document.getElementById('loginPassword');
             const LpasswordFieldType = LpasswordField.getAttribute('type');
