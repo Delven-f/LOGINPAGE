@@ -17,15 +17,15 @@
             box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-            border-radius: 1rem;
+            border-radius: 1.25rem; /* lebih besar */
             border: 1px solid rgba(180, 180, 180, 0.18);
         }
         .neutral-accent {
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.90); /* lebih tebal */
             transition: background 0.2s;
         }
         .neutral-accent-2 {
-            background: rgba(243,244,246,0.95);
+            background: rgba(243,244,246,0.98);
             transition: background 0.2s;
         }
         .neutral-border {
@@ -44,17 +44,20 @@
         .wave, .w-full.absolute.overflow-hidden.z-0 {
             display: none !important;
         }
-        html, body { font-size: 13px; }
+        html, body { font-size: 16px; } /* perbesar font */
+        @media (max-width: 600px) {
+            html, body { font-size: 15px; }
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen" style="background: none !important;">
-    <div class="flex items-center justify-center min-h-screen w-full px-1 card-container">
-        <div class="glass-card max-w-xs w-full p-3 md:p-2">
-            <div class="flex flex-col items-center mb-2">
-                <div class="relative flex items-center justify-center mb-1">
-                    <div class="rounded-full shadow-xl border-2 border-gray-200 bg-white bg-opacity-80 w-12 h-12 flex items-center justify-center">
+    <div class="flex items-center justify-center min-h-screen w-full px-2 card-container">
+        <div class="glass-card max-w-md w-full p-6 md:p-5">
+            <div class="flex flex-col items-center mb-4">
+                <div class="relative flex items-center justify-center mb-2">
+                    <div class="rounded-full shadow-xl border-2 border-gray-200 bg-white bg-opacity-80 w-16 h-16 flex items-center justify-center">
                         <!-- SVG Logo -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-8 h-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-12 h-12">
                           <defs>
                             <radialGradient id="grayGlass" cx="70" cy="70" r="66" gradientUnits="userSpaceOnUse">
                               <stop offset="0%" stop-color="#e5e7eb"/>
@@ -70,10 +73,10 @@
                         </svg>
                     </div>
                 </div>
-                <h1 class="text-base font-extrabold neutral-text tracking-wide drop-shadow mb-0.5">GTPS SERVER</h1>
-                <p class="text-xs neutral-text font-medium tracking-wide opacity-80 text-center">Welcome back! login to your account</p>
+                <h1 class="text-lg font-extrabold neutral-text tracking-wide drop-shadow mb-1">GTPS SERVER</h1>
+                <p class="text-sm neutral-text font-medium tracking-wide opacity-80 text-center">Welcome back! login to your account</p>
             </div>
-            <div id="errorDiv" class="hidden bg-red-400 text-white p-1 my-2 rounded-lg text-center shadow-md text-xs font-medium transition-all duration-200">
+            <div id="errorDiv" class="hidden bg-red-400 text-white p-2 my-3 rounded-lg text-center shadow-md text-sm font-medium transition-all duration-200">
                 <span id="errorMessage"></span>
             </div>
             <form 
@@ -81,37 +84,37 @@
                 action="/player/growid/login/validate"
                 accept-charset="UTF-8"
                 id="loginForm">
-                <div class="mb-1">
-                    <label for="loginGrowId" class="block neutral-text text-xs font-semibold mb-0.5">GrowID</label>
-                    <div class="flex items-center border neutral-border rounded-lg neutral-accent px-2 py-1 focus-within:border-gray-400 shadow-sm">
-                        <i class="fas fa-user text-gray-400 mr-1 text-xs"></i>
+                <div class="mb-2">
+                    <label for="loginGrowId" class="block neutral-text text-sm font-semibold mb-1">GrowID</label>
+                    <div class="flex items-center border neutral-border rounded-lg neutral-accent px-3 py-2 focus-within:border-gray-400 shadow-sm">
+                        <i class="fas fa-user text-gray-400 mr-2 text-sm"></i>
                         <input type="text" name="growId" id="loginGrowId" 
-                               class="w-full bg-transparent neutral-text text-xs font-medium neutral-placeholder focus:outline-none"
+                               class="w-full bg-transparent neutral-text text-sm font-medium neutral-placeholder focus:outline-none"
                                placeholder="Enter your GrowID" autocomplete="username">
                     </div>
                 </div>
-                <div class="mb-2">
-                    <label for="loginPassword" class="block neutral-text text-xs font-semibold mb-0.5">Password</label>
-                    <div class="flex items-center border neutral-border rounded-lg neutral-accent px-2 py-1 focus-within:border-gray-400 shadow-sm">
-                        <i class="fas fa-lock text-gray-400 mr-1 text-xs"></i>
+                <div class="mb-3">
+                    <label for="loginPassword" class="block neutral-text text-sm font-semibold mb-1">Password</label>
+                    <div class="flex items-center border neutral-border rounded-lg neutral-accent px-3 py-2 focus-within:border-gray-400 shadow-sm">
+                        <i class="fas fa-lock text-gray-400 mr-2 text-sm"></i>
                         <input type="password" name="password" id="loginPassword" 
-                               class="w-full bg-transparent neutral-text text-xs font-medium neutral-placeholder focus:outline-none"
+                               class="w-full bg-transparent neutral-text text-sm font-medium neutral-placeholder focus:outline-none"
                                placeholder="Enter your password" autocomplete="current-password">
-                        <button type="button" id="toggleLogPassword" class="text-gray-400 ml-1 focus:outline-none text-xs" tabindex="-1">
+                        <button type="button" id="toggleLogPassword" class="text-gray-400 ml-2 focus:outline-none text-sm" tabindex="-1">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                 </div>
-                <div class="flex justify-between items-center mt-2">
+                <div class="flex justify-between items-center mt-3">
                     <!-- Tombol Login -->
                     <button id="loginButton" 
-                            class="px-3 py-1.5 rounded bg-[#00b8ff] text-white text-xs hover:bg-[#06a4dd] transition duration-300 ease-in-out transform hover:scale-105">
+                            class="px-5 py-2 rounded bg-[#00b8ff] text-white text-sm hover:bg-[#06a4dd] transition duration-300 ease-in-out transform hover:scale-105">
                         Login
                     </button>
                     <!-- Tombol Register -->
                     <a href="/register">
                         <button id="registerButton" 
-                                class="px-3 py-1.5 rounded bg-[#4caf50] text-white text-xs hover:bg-[#43a047] transition duration-300 ease-in-out transform hover:scale-105">
+                                class="px-5 py-2 rounded bg-[#4caf50] text-white text-sm hover:bg-[#43a047] transition duration-300 ease-in-out transform hover:scale-105">
                             Register
                         </button>
                     </a>
