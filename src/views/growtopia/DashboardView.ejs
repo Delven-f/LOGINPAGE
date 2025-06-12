@@ -12,78 +12,92 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background: repeating-linear-gradient(
-                45deg,
-                #222 0px, #222 20px,
-                #333 20px, #333 40px
-            );
+            background: linear-gradient(120deg, #ff4e50, #f9d423, #1e90ff, #43e97b 80%, #38f9d7 100%);
+            background-size: 400% 400%;
+            animation: rainbowBG 10s ease infinite;
             font-family: 'Press Start 2P', cursive !important;
         }
+        @keyframes rainbowBG {
+            0% {background-position:0% 50%}
+            50% {background-position:100% 50%}
+            100% {background-position:0% 50%}
+        }
         .glass-card {
-            background: #f0e9e0;
-            box-shadow: 0 0 0 8px #222, 8px 8px 0 0 #000;
-            border-radius: 0;
-            border: 4px solid #111;
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 0 0 8px #ff80ab, 8px 8px 0 0 #8f00ff;
+            border-radius: 24px;
+            border: 4px solid #00e6e6;
             padding: 32px 20px 20px 20px !important;
+            transition: box-shadow 0.3s;
+        }
+        .glass-card:hover {
+            box-shadow: 0 0 10px 8px #ffe53b, 8px 8px 0 0 #ff2525;
         }
         .neutral-accent, .neutral-accent-2 {
-            background: #fbf3e4;
-            border: 2px solid #222 !important;
-            border-radius: 0 !important;
-            box-shadow: 4px 4px 0 0 #111;
+            background: linear-gradient(90deg,#fcb045,#fd1d1d,#833ab4,#43e97b,#38f9d7);
+            color: #fff;
+            border: 2px solid #fff !important;
+            border-radius: 12px !important;
+            box-shadow: 4px 4px 0 0 #fd1d1d;
         }
         .neutral-border {
-            border-color: #222 !important;
+            border-color: #833ab4 !important;
             border-width: 2px !important;
         }
         .neutral-text {
-            color: #111 !important;
-            text-shadow: 2px 2px 0 #fff;
+            color: #fff !important;
+            text-shadow: 2px 2px 0 #000;
         }
         .neutral-placeholder {
-            color: #888 !important;
+            color: #ffe53b !important;
         }
         .card-container {
             position: relative;
             z-index: 2;
         }
-        .wave, .w-full.absolute.overflow-hidden.z-0 {
-            display: none !important;
-        }
         label, input, button, a, h1, p {
             font-family: 'Press Start 2P', cursive !important;
         }
         input {
-            border-radius: 0 !important;
-            border: 2px solid #222 !important;
-            box-shadow: 2px 2px 0 #000 !important;
+            border-radius: 12px !important;
+            border: 2px solid #833ab4 !important;
+            box-shadow: 2px 2px 0 #38f9d7 !important;
             font-size: 10px !important;
-            background: #fff !important;
+            background: #fffb !important;
+            color: #111 !important;
         }
         input:focus {
             outline: none;
-            border-color: #00b8ff !important;
-            background: #e0f7fa !important;
+            border-color: #ff4e50 !important;
+            background: #f9d423 !important;
         }
         button {
-            border-radius: 0 !important;
-            box-shadow: 2px 2px 0 #000 !important;
-            border: 2px solid #222 !important;
+            border-radius: 12px !important;
+            box-shadow: 2px 2px 0 #00e6e6 !important;
+            border: 2px solid #833ab4 !important;
             font-size: 10px !important;
             padding: 10px 20px !important;
+            background: linear-gradient(90deg, #ff4e50, #f9d423, #1e90ff, #43e97b, #38f9d7);
+            background-size: 400% 400%;
+            color: #fff !important;
+            transition: background-position 0.5s;
+        }
+        button:hover {
+            background-position: 100% 0;
+            box-shadow: 0 0 10px 2px #f9d423;
         }
         .text-lg {
             font-size: 18px !important;
             letter-spacing: 1px;
         }
         .rounded-full, .rounded-lg, .border-2, .shadow-xl {
-            border-radius: 0 !important;
+            border-radius: 12px !important;
             box-shadow: none !important;
         }
         .svg-logo-bg {
-            background: #fff;
-            border: 4px solid #000;
-            box-shadow: 4px 4px 0 #333;
+            background: linear-gradient(135deg, #fd1d1d, #833ab4, #43e97b, #fcb045);
+            border: 4px solid #fff;
+            box-shadow: 4px 4px 0 #38f9d7;
             width: 64px; height: 64px;
             display: flex; align-items: center; justify-content: center;
         }
@@ -101,9 +115,9 @@
                     <div class="svg-logo-bg">
                         <!-- SVG Logo, optionally convert to pixel style if mau -->
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-12 h-12">
-                          <rect x="0" y="0" width="140" height="140" fill="#e5e7eb" stroke="#000" stroke-width="6"/>
-                          <rect x="22" y="22" width="96" height="96" fill="#a6a6a6" stroke="#000" stroke-width="4"/>
-                          <rect x="40" y="40" width="60" height="60" fill="#fff" stroke="#000" stroke-width="3"/>
+                          <rect x="0" y="0" width="140" height="140" fill="#e5e7eb" stroke="#ff4e50" stroke-width="6"/>
+                          <rect x="22" y="22" width="96" height="96" fill="#fcb045" stroke="#1e90ff" stroke-width="4"/>
+                          <rect x="40" y="40" width="60" height="60" fill="#43e97b" stroke="#fd1d1d" stroke-width="3"/>
                         </svg>
                     </div>
                 </div>
@@ -122,7 +136,7 @@
                 <div class="mb-2">
                     <label for="loginGrowId" class="block neutral-text text-sm font-semibold mb-1">GrowID</label>
                     <div class="flex items-center border neutral-border rounded-lg neutral-accent px-3 py-2 focus-within:border-gray-400 shadow-sm">
-                        <i class="fas fa-user text-gray-400 mr-2 text-sm"></i>
+                        <i class="fas fa-user text-gray-200 mr-2 text-sm"></i>
                         <input type="text" name="growId" id="loginGrowId" 
                                class="w-full bg-transparent neutral-text text-sm font-medium neutral-placeholder focus:outline-none"
                                placeholder="Enter your GrowID" autocomplete="username">
@@ -131,11 +145,11 @@
                 <div class="mb-3">
                     <label for="loginPassword" class="block neutral-text text-sm font-semibold mb-1">Password</label>
                     <div class="flex items-center border neutral-border rounded-lg neutral-accent px-3 py-2 focus-within:border-gray-400 shadow-sm">
-                        <i class="fas fa-lock text-gray-400 mr-2 text-sm"></i>
+                        <i class="fas fa-lock text-gray-200 mr-2 text-sm"></i>
                         <input type="password" name="password" id="loginPassword" 
                                class="w-full bg-transparent neutral-text text-sm font-medium neutral-placeholder focus:outline-none"
                                placeholder="Enter your password" autocomplete="current-password">
-                        <button type="button" id="toggleLogPassword" class="text-gray-400 ml-2 focus:outline-none text-sm" tabindex="-1">
+                        <button type="button" id="toggleLogPassword" class="text-white ml-2 focus:outline-none text-sm" tabindex="-1">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -143,13 +157,13 @@
                 <div class="flex justify-between items-center mt-3">
                     <!-- Tombol Login -->
                     <button id="loginButton" 
-                            class="px-5 py-2 rounded bg-[#00b8ff] text-white text-sm hover:bg-[#06a4dd] transition duration-300 ease-in-out transform hover:scale-105">
+                            class="px-5 py-2 rounded bg-gradient-to-r from-pink-500 via-yellow-400 to-blue-400 text-white text-sm hover:bg-gradient-to-l transition duration-300 ease-in-out transform hover:scale-105">
                         Login
                     </button>
                     <!-- Tombol Register -->
                     <a href="/register">
                         <button id="registerButton" 
-                                class="px-5 py-2 rounded bg-[#4caf50] text-white text-sm hover:bg-[#43a047] transition duration-300 ease-in-out transform hover:scale-105">
+                                class="px-5 py-2 rounded bg-gradient-to-r from-green-400 via-blue-400 to-pink-400 text-white text-sm hover:bg-gradient-to-l transition duration-300 ease-in-out transform hover:scale-105">
                             Register
                         </button>
                     </a>
