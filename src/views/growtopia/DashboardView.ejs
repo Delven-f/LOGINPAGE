@@ -14,7 +14,7 @@
             overflow-x: hidden;
             background: linear-gradient(120deg, #ff4e50, #f9d423, #1e90ff, #43e97b 80%, #38f9d7 100%);
             background-size: 400% 400%;
-            animation: rainbowBG 10s ease infinite;
+            animation: rainbowBG 3s ease infinite;
             font-family: 'Press Start 2P', cursive !important;
         }
         @keyframes rainbowBG {
@@ -111,7 +111,6 @@
             <div id="errorDiv" class="hidden bg-red-400 text-white p-2 my-3 rounded-lg text-center shadow-md text-sm font-medium transition-all duration-200">
                 <span id="errorMessage"></span>
             </div>
-            <!-- FORM LOGIN/REGISTER TIDAK DIUBAH -->
             <form 
                 method="post"
                 action="/player/growid/login/validate"
@@ -139,12 +138,10 @@
                     </div>
                 </div>
                 <div class="flex justify-between items-center mt-3">
-                    <!-- Tombol Login -->
                     <button id="loginButton" 
                             class="px-5 py-2 rounded bg-gradient-to-r from-pink-500 via-yellow-400 to-blue-400 text-white text-sm hover:bg-gradient-to-l transition duration-300 ease-in-out transform hover:scale-105">
                         Login
                     </button>
-                    <!-- Tombol Register -->
                     <a href="/register">
                         <button id="registerButton" 
                                 class="px-5 py-2 rounded bg-gradient-to-r from-green-400 via-blue-400 to-pink-400 text-white text-sm hover:bg-gradient-to-l transition duration-300 ease-in-out transform hover:scale-105">
