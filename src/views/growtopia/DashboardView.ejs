@@ -94,13 +94,6 @@
             border-radius: 12px !important;
             box-shadow: none !important;
         }
-        .svg-logo-bg {
-            background: linear-gradient(135deg, #fd1d1d, #833ab4, #43e97b, #fcb045);
-            border: 4px solid #fff;
-            box-shadow: 4px 4px 0 #38f9d7;
-            width: 64px; height: 64px;
-            display: flex; align-items: center; justify-content: center;
-        }
         @media (max-width: 600px) {
             html, body { font-size: 10px; }
             .glass-card { padding: 15px 5px 10px 5px !important; }
@@ -111,16 +104,7 @@
     <div class="flex items-center justify-center min-h-screen w-full px-2 card-container">
         <div class="glass-card max-w-md w-full">
             <div class="flex flex-col items-center mb-4">
-                <div class="relative flex items-center justify-center mb-2">
-                    <div class="svg-logo-bg">
-                        <!-- SVG Logo, optionally convert to pixel style if mau -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-12 h-12">
-                          <rect x="0" y="0" width="140" height="140" fill="#e5e7eb" stroke="#ff4e50" stroke-width="6"/>
-                          <rect x="22" y="22" width="96" height="96" fill="#fcb045" stroke="#1e90ff" stroke-width="4"/>
-                          <rect x="40" y="40" width="60" height="60" fill="#43e97b" stroke="#fd1d1d" stroke-width="3"/>
-                        </svg>
-                    </div>
-                </div>
+                <!-- LOGO DIHILANGKAN SESUAI PERMINTAAN -->
                 <h1 class="text-lg font-extrabold neutral-text tracking-wide drop-shadow mb-1">GTPS SERVER</h1>
                 <p class="text-sm neutral-text font-medium tracking-wide opacity-80 text-center">Welcome back! login to your account</p>
             </div>
@@ -172,7 +156,6 @@
         </div>
     </div>
     <script>
-    // ...script tetap sama...
     document.addEventListener('DOMContentLoaded', function () {
         if (localStorage.getItem('growId')) {
             document.getElementById('loginGrowId').value = localStorage.getItem('growId');
