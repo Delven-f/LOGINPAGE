@@ -12,14 +12,31 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background: linear-gradient(120deg, #ff4e50, #f9d423, #1e90ff, #43e97b 80%, #38f9d7 100%);
-            background-size: 400% 400%;
-            animation: rainbowBG 3s ease infinite;
+            background: linear-gradient(
+                120deg,
+                #ff4e50 0%,
+                #fd1d1d 10%,
+                #f9d423 20%,
+                #a8ff78 30%,
+                #1e90ff 40%,
+                #43e97b 50%,
+                #38f9d7 60%,
+                #a770ef 70%,
+                #f6d365 80%,
+                #fda085 90%,
+                #f5576c 100%,
+                #4facfe 110%,
+                #43e97b 120%
+            );
+            background-size: 800% 800%;
+            animation: rainbowBG 1.1s linear infinite;
             font-family: 'Press Start 2P', cursive !important;
         }
         @keyframes rainbowBG {
             0% {background-position:0% 50%}
+            25% {background-position:50% 100%}
             50% {background-position:100% 50%}
+            75% {background-position:50% 0%}
             100% {background-position:0% 50%}
         }
         .glass-card {
@@ -77,8 +94,8 @@
             border: 2px solid #833ab4 !important;
             font-size: 10px !important;
             padding: 10px 20px !important;
-            background: linear-gradient(90deg, #ff4e50, #f9d423, #1e90ff, #43e97b, #38f9d7);
-            background-size: 400% 400%;
+            background: linear-gradient(90deg, #ff4e50, #fd1d1d, #f9d423, #a8ff78, #1e90ff, #43e97b, #38f9d7, #a770ef, #f6d365, #fda085, #f5576c, #4facfe, #43e97b);
+            background-size: 800% 800%;
             color: #fff !important;
             transition: background-position 0.5s;
         }
