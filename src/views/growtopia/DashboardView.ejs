@@ -6,36 +6,42 @@
     <title>DelvineX - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Pixel font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
-            background: none !important;
             min-height: 100vh;
             overflow-x: hidden;
+            background: repeating-linear-gradient(
+                45deg,
+                #222 0px, #222 20px,
+                #333 20px, #333 40px
+            );
+            font-family: 'Press Start 2P', cursive !important;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.80);
-            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: 1.25rem; /* lebih besar */
-            border: 1px solid rgba(180, 180, 180, 0.18);
+            background: #f0e9e0;
+            box-shadow: 0 0 0 8px #222, 8px 8px 0 0 #000;
+            border-radius: 0;
+            border: 4px solid #111;
+            padding: 32px 20px 20px 20px !important;
         }
-        .neutral-accent {
-            background: rgba(255,255,255,0.90); /* lebih tebal */
-            transition: background 0.2s;
-        }
-        .neutral-accent-2 {
-            background: rgba(243,244,246,0.98);
-            transition: background 0.2s;
+        .neutral-accent, .neutral-accent-2 {
+            background: #fbf3e4;
+            border: 2px solid #222 !important;
+            border-radius: 0 !important;
+            box-shadow: 4px 4px 0 0 #111;
         }
         .neutral-border {
-            border-color: rgba(120,120,120,0.14);
+            border-color: #222 !important;
+            border-width: 2px !important;
         }
         .neutral-text {
-            color: #23272f;
+            color: #111 !important;
+            text-shadow: 2px 2px 0 #fff;
         }
         .neutral-placeholder {
-            color: #aaa;
+            color: #888 !important;
         }
         .card-container {
             position: relative;
@@ -44,32 +50,60 @@
         .wave, .w-full.absolute.overflow-hidden.z-0 {
             display: none !important;
         }
-        html, body { font-size: 16px; } /* perbesar font */
+        label, input, button, a, h1, p {
+            font-family: 'Press Start 2P', cursive !important;
+        }
+        input {
+            border-radius: 0 !important;
+            border: 2px solid #222 !important;
+            box-shadow: 2px 2px 0 #000 !important;
+            font-size: 10px !important;
+            background: #fff !important;
+        }
+        input:focus {
+            outline: none;
+            border-color: #00b8ff !important;
+            background: #e0f7fa !important;
+        }
+        button {
+            border-radius: 0 !important;
+            box-shadow: 2px 2px 0 #000 !important;
+            border: 2px solid #222 !important;
+            font-size: 10px !important;
+            padding: 10px 20px !important;
+        }
+        .text-lg {
+            font-size: 18px !important;
+            letter-spacing: 1px;
+        }
+        .rounded-full, .rounded-lg, .border-2, .shadow-xl {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        .svg-logo-bg {
+            background: #fff;
+            border: 4px solid #000;
+            box-shadow: 4px 4px 0 #333;
+            width: 64px; height: 64px;
+            display: flex; align-items: center; justify-content: center;
+        }
         @media (max-width: 600px) {
-            html, body { font-size: 15px; }
+            html, body { font-size: 10px; }
+            .glass-card { padding: 15px 5px 10px 5px !important; }
         }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen" style="background: none !important;">
     <div class="flex items-center justify-center min-h-screen w-full px-2 card-container">
-        <div class="glass-card max-w-md w-full p-6 md:p-5">
+        <div class="glass-card max-w-md w-full">
             <div class="flex flex-col items-center mb-4">
                 <div class="relative flex items-center justify-center mb-2">
-                    <div class="rounded-full shadow-xl border-2 border-gray-200 bg-white bg-opacity-80 w-16 h-16 flex items-center justify-center">
-                        <!-- SVG Logo -->
+                    <div class="svg-logo-bg">
+                        <!-- SVG Logo, optionally convert to pixel style if mau -->
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" class="w-12 h-12">
-                          <defs>
-                            <radialGradient id="grayGlass" cx="70" cy="70" r="66" gradientUnits="userSpaceOnUse">
-                              <stop offset="0%" stop-color="#e5e7eb"/>
-                              <stop offset="80%" stop-color="#a6a6a6"/>
-                              <stop offset="100%" stop-color="#f3f4f6"/>
-                            </radialGradient>
-                          </defs>
-                          <circle cx="70" cy="70" r="66" fill="url(#grayGlass)" stroke="#fff" stroke-width="3"/>
-                          <path d="M70,22c27.5,0,50,22.5,50,50s-22.5,50-50,50c-17,0-32.1-8.6-41.3-21.7" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-                          <path d="M70,40c18.8,0,34,15.2,34,34s-15.2,34-34,34c-11.5,0-21.6-5.8-27.5-14.7" fill="none" stroke="#fff" stroke-width="3"/>
-                          <path d="M70,57c9.7,0,17.5,7.8,17.5,17.5S79.7,92,70,92c-5.8,0-10.8-3-13.7-7.5" fill="none" stroke="#fff" stroke-width="2"/>
-                          <circle cx="70" cy="74.5" r="8.5" fill="none" stroke="#fff" stroke-width="2"/>
+                          <rect x="0" y="0" width="140" height="140" fill="#e5e7eb" stroke="#000" stroke-width="6"/>
+                          <rect x="22" y="22" width="96" height="96" fill="#a6a6a6" stroke="#000" stroke-width="4"/>
+                          <rect x="40" y="40" width="60" height="60" fill="#fff" stroke="#000" stroke-width="3"/>
                         </svg>
                     </div>
                 </div>
@@ -79,6 +113,7 @@
             <div id="errorDiv" class="hidden bg-red-400 text-white p-2 my-3 rounded-lg text-center shadow-md text-sm font-medium transition-all duration-200">
                 <span id="errorMessage"></span>
             </div>
+            <!-- FORM LOGIN/REGISTER TIDAK DIUBAH -->
             <form 
                 method="post"
                 action="/player/growid/login/validate"
@@ -123,47 +158,41 @@
         </div>
     </div>
     <script>
-       document.addEventListener('DOMContentLoaded', function () {
-            // Auto-fill GrowID from localStorage
-            if (localStorage.getItem('growId')) {
-                document.getElementById('loginGrowId').value = localStorage.getItem('growId');
-            }
-        });
-
-        // Event listener for login button
-        document.getElementById('loginButton').addEventListener('click', function (event) {
-            event.preventDefault();
-
-            const loginForm = document.getElementById('loginForm');
-            const uName = document.getElementById('loginGrowId').value;
-            const uPass = document.getElementById('loginPassword').value;
-
-            if (!uName || !uPass) {
-                document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
-                return;
-            } else if (uName.length < 3 || uPass.length < 3) {
-                document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 3 characters long';
-                return;
-            } else {
-                loginForm.submit();
-                localStorage.setItem('growId', uName); // Save GrowID to localStorage
-            }
-        });
-
-        // Toggle visibility of the password field
-        document.getElementById('toggleLogPassword').addEventListener('click', function () {
-            const LpasswordField = document.getElementById('loginPassword');
-            const LpasswordFieldType = LpasswordField.getAttribute('type');
-            if (LpasswordFieldType === 'password') {
-                LpasswordField.setAttribute('type', 'text');
-                this.innerHTML = '<i class="fas fa-eye-slash"></i>';
-            } else {
-                LpasswordField.setAttribute('type', 'password');
-                this.innerHTML = '<i class="fas fa-eye"></i>';
-            }
-        });
+    // ...script tetap sama...
+    document.addEventListener('DOMContentLoaded', function () {
+        if (localStorage.getItem('growId')) {
+            document.getElementById('loginGrowId').value = localStorage.getItem('growId');
+        }
+    });
+    document.getElementById('loginButton').addEventListener('click', function (event) {
+        event.preventDefault();
+        const loginForm = document.getElementById('loginForm');
+        const uName = document.getElementById('loginGrowId').value;
+        const uPass = document.getElementById('loginPassword').value;
+        if (!uName || !uPass) {
+            document.getElementById('errorDiv').classList.remove('hidden');
+            document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
+            return;
+        } else if (uName.length < 3 || uPass.length < 3) {
+            document.getElementById('errorDiv').classList.remove('hidden');
+            document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 3 characters long';
+            return;
+        } else {
+            loginForm.submit();
+            localStorage.setItem('growId', uName);
+        }
+    });
+    document.getElementById('toggleLogPassword').addEventListener('click', function () {
+        const LpasswordField = document.getElementById('loginPassword');
+        const LpasswordFieldType = LpasswordField.getAttribute('type');
+        if (LpasswordFieldType === 'password') {
+            LpasswordField.setAttribute('type', 'text');
+            this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+            LpasswordField.setAttribute('type', 'password');
+            this.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+    });
     </script>
 </body>
 </html>
