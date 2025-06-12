@@ -3,200 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DelvineX - Pixel Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- PIXEL FONT -->
+    <title>DelvineX - Dashboard</title>
+    <!-- Font Pixel -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #ff7eb3 0%, #65d6ce 100%);
+        .pixel-font {
             font-family: 'Press Start 2P', cursive !important;
-            overflow-x: hidden;
+            image-rendering: pixelated;
+            letter-spacing: 1px;
         }
         .pixel-card {
-            background: rgba(255, 255, 255, 0.90);
-            border: 4px solid #333;
+            border: 4px solid #222;
+            box-shadow: 0 0 0 4px #fff, 0 8px 32px 0 rgba(31,38,135,0.10);
             border-radius: 0;
-            box-shadow: 0 0 0 8px #feffb7, 0 0 32px #f8a5c2, 0 0 32px #65d6ce;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-            font-family: 'Press Start 2P', cursive !important;
-        }
-        .pixel-border {
-            border: 4px solid #333;
-            border-radius: 0;
-            background: #f3f3f3;
-            box-shadow: 4px 4px 0 #ffb3b3, 8px 8px 0 #65d6ce;
+            background: #e0e0e0;
         }
         .pixel-btn {
+            font-family: 'Press Start 2P', cursive !important;
             border: 2px solid #222;
-            background: linear-gradient(90deg, #fff200, #ff61c3, #09fbd3, #f5b700, #00b8ff);
-            color: #2d2d2d !important;
-            font-family: 'Press Start 2P', cursive;
-            text-shadow: 2px 2px 0 #fff, 0 0 2px #222;
-            box-shadow: 2px 2px 0 #222;
-            transition: filter 0.2s, box-shadow 0.2s, transform 0.2s;
+            border-radius: 0;
+            background: #00b8ff;
+            color: #fff;
+            padding: 10px 32px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin: 4px;
+            transition: background 0.2s, transform 0.2s;
         }
         .pixel-btn:hover {
-            filter: brightness(1.15);
-            box-shadow: 4px 4px 0 #222;
-            transform: scale(1.05);
+            background: #06a4dd;
+            transform: scale(1.1);
         }
-        .pixel-title {
-            font-size: 1.3rem;
-            color: #ff2a6d;
-            text-shadow: 2px 2px 0 #fff, 4px 4px 0 #222;
-            margin-bottom: .5rem;
-            letter-spacing: 2px;
+        body {
+            background: #b8eaff;
+            min-height: 100vh;
         }
-        .pixel-desc {
-            color: #333;
-            background: linear-gradient(90deg, #ffb3b3 20%, #b3ffd9 80%);
-            padding: 4px 0;
-            border-bottom: 2px solid #ff2a6d;
-            font-size: 0.7rem;
-            margin-bottom: 1rem;
+        /* Tambahan gaya untuk tabel pixel */
+        .pixel-table {
+            font-family: 'Press Start 2P', cursive !important;
+            border-collapse: collapse;
+            width: 100%;
         }
-        label {
-            color: #222;
-            font-size: 0.7rem;
-            text-shadow: 1px 1px 0 #fff;
-        }
-        .pixel-input {
-            border: 2px solid #ff2a6d;
-            border-radius: 0;
-            background: #fff;
-            color: #222;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.7rem;
-            padding: 7px 10px;
-            box-shadow: 2px 2px 0 #65d6ce;
-            margin-left: 10px;
-        }
-        .pixel-icon {
-            color: #ff2a6d;
-            font-size: 1rem;
-            margin-right: 10px;
-        }
-        #errorDiv {
-            background: #ff2a6d;
-            color: #fff;
+        .pixel-table th, .pixel-table td {
             border: 2px solid #222;
-            box-shadow: 2px 2px 0 #fff;
-            font-size: 0.7rem;
-            font-family: 'Press Start 2P', cursive;
+            padding: 8px;
+            background: #fff;
+            font-size: 10px;
         }
-        /* Pixel art logo */
-        .pixel-logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        /* Responsive */
-        @media (max-width: 600px) {
-            html, body { font-size: 13px; }
-            .pixel-card { padding: 1.2rem; }
+        .pixel-table th {
+            background: #ffcc00;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen">
-    <div class="flex items-center justify-center min-h-screen w-full px-2 card-container">
-        <div class="pixel-card max-w-md w-full">
-            <div class="pixel-logo">
-                <!-- Contoh SVG pixel art logo -->
-                <svg width="60" height="60" viewBox="0 0 60 60">
-                  <rect x="2" y="2" width="56" height="56" fill="#ffe066" stroke="#222" stroke-width="4"/>
-                  <rect x="11" y="11" width="15" height="15" fill="#ff2a6d" stroke="#222" stroke-width="2"/>
-                  <rect x="34" y="11" width="15" height="15" fill="#00b8ff" stroke="#222" stroke-width="2"/>
-                  <rect x="11" y="34" width="38" height="15" fill="#65d6ce" stroke="#222" stroke-width="2"/>
-                </svg>
+<body>
+    <div class="flex items-center justify-center min-h-screen w-full px-2">
+        <div class="pixel-card max-w-2xl w-full p-8 flex flex-col items-center">
+            <!-- Logo Pixel (opsional) -->
+            <div class="mb-4">
+                <img src="/path/to/your/pixel-logo.png" alt="Logo" style="width: 80px; image-rendering: pixelated;">
             </div>
-            <h1 class="pixel-title text-center">GTPS PIXEL DASHBOARD</h1>
-            <div class="pixel-desc text-center">Welcome back! Login to your account in style!</div>
-            <div id="errorDiv" class="hidden p-2 my-3 rounded-lg text-center shadow-md text-sm font-medium transition-all duration-200">
-                <span id="errorMessage"></span>
+            <!-- Judul Dashboard -->
+            <h1 class="pixel-font text-2xl mb-2 text-[#222]">DASHBOARD GTPS</h1>
+            <!-- Deskripsi Dashboard -->
+            <p class="pixel-font text-xs mb-6 text-[#444] text-center">
+                Selamat datang di server GTPS kamu!<br>
+                Semua aktivitas dan informasi akunmu tersedia di bawah ini.
+            </p>
+            <!-- Contoh Tabel User Info -->
+            <table class="pixel-table mb-6">
+                <tr>
+                    <th>GrowID</th>
+                    <td><%= user.growId %></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><%= user.email %></td>
+                </tr>
+                <tr>
+                    <th>Level</th>
+                    <td><%= user.level %></td>
+                </tr>
+                <!-- Tambahkan baris lain sesuai kebutuhan -->
+            </table>
+            <!-- Contoh tombol pixel -->
+            <div class="flex flex-wrap justify-center">
+                <a href="/logout"><button class="pixel-btn">LOGOUT</button></a>
+                <a href="/profile"><button class="pixel-btn">PROFILE</button></a>
+                <!-- Tambahkan tombol lain sesuai kebutuhan -->
             </div>
-            <form 
-                method="post"
-                action="/player/growid/login/validate"
-                accept-charset="UTF-8"
-                id="loginForm">
-                <div class="mb-2 flex items-center pixel-border p-2">
-                    <i class="fas fa-user pixel-icon"></i>
-                    <label for="loginGrowId" class="block font-semibold mb-0" style="margin-right:5px;">GrowID</label>
-                    <input type="text" name="growId" id="loginGrowId" 
-                        class="pixel-input flex-1"
-                        placeholder="Your GrowID" autocomplete="username">
-                </div>
-                <div class="mb-3 flex items-center pixel-border p-2">
-                    <i class="fas fa-lock pixel-icon"></i>
-                    <label for="loginPassword" class="block font-semibold mb-0" style="margin-right:5px;">Password</label>
-                    <input type="password" name="password" id="loginPassword" 
-                        class="pixel-input flex-1"
-                        placeholder="Password" autocomplete="current-password">
-                    <button type="button" id="toggleLogPassword" class="text-gray-400 ml-2 focus:outline-none text-sm" style="background:none;border:none;" tabindex="-1">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-                <div class="flex justify-between items-center mt-3">
-                    <button id="loginButton" type="button" class="pixel-btn px-5 py-2">
-                        LOGIN
-                    </button>
-                    <a href="/register">
-                        <button id="registerButton" type="button" class="pixel-btn px-5 py-2" style="background:linear-gradient(90deg,#09fbd3,#f5b700,#ff61c3);">
-                            REGISTER
-                        </button>
-                    </a>
-                </div>
-            </form>
         </div>
     </div>
-    <script>
-       document.addEventListener('DOMContentLoaded', function () {
-            // Auto-fill GrowID from localStorage
-            if (localStorage.getItem('growId')) {
-                document.getElementById('loginGrowId').value = localStorage.getItem('growId');
-            }
-        });
-
-        // Event listener for login button
-        document.getElementById('loginButton').addEventListener('click', function (event) {
-            event.preventDefault();
-
-            const loginForm = document.getElementById('loginForm');
-            const uName = document.getElementById('loginGrowId').value;
-            const uPass = document.getElementById('loginPassword').value;
-
-            if (!uName || !uPass) {
-                document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
-                return;
-            } else if (uName.length < 3 || uPass.length < 3) {
-                document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 3 characters long';
-                return;
-            } else {
-                loginForm.submit();
-                localStorage.setItem('growId', uName); // Save GrowID to localStorage
-            }
-        });
-
-        // Toggle visibility of the password field
-        document.getElementById('toggleLogPassword').addEventListener('click', function () {
-            const LpasswordField = document.getElementById('loginPassword');
-            const LpasswordFieldType = LpasswordField.getAttribute('type');
-            if (LpasswordFieldType === 'password') {
-                LpasswordField.setAttribute('type', 'text');
-                this.innerHTML = '<i class="fas fa-eye-slash"></i>';
-            } else {
-                LpasswordField.setAttribute('type', 'password');
-                this.innerHTML = '<i class="fas fa-eye"></i>';
-            }
-        });
-    </script>
 </body>
 </html>
